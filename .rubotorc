@@ -1,0 +1,2 @@
+PATH="$HOME/android-sdk-linux/build-tools/23.0.1:$PATH"
+PATH="$HOME/android-sdk-linux/tools:$PATH"

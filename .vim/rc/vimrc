@@ -1,0 +1,46 @@
+if &compatible
+  set nocompatible
+endif
+
+"s:source_rc {{{
+function! s:source_rc(path) abort
+  let l:fullpath = fnameescape(expand('$HOME/.vim/rc/' . a:path))
+	if filereadable(l:fullpath)
+    execute 'source' l:fullpath
+	else
+		"echomsg "cannot read " . a:path 
+	endif
+endfunction
+"}}}
+
+let s:is_windows = has('win16') || has('win32') || has('win64') || has('win95')
+let s:is_unix = has('unix')
+
+function! IsWindows() abort
+  return s:is_windows
+endfunction
+
+function! IsUnix() abort
+  return s:is_unix
+endfunction
+
+call s:source_rc('init.rc.vim')
+
+call s:source_rc('dein.rc.vim')
+
+call s:source_rc('plugins.rc.vim')
+
+call s:source_rc('encoding.rc.vim')
+
+call s:source_rc('search.rc.vim')
+
+call s:source_rc('edit.rc.vim')
+
+call s:source_rc('view.rc.vim')
+
+call s:source_rc('filetype.rc.vim')
+
+call s:source_rc('keymap.rc.vim')
+
+"vim: foldmethod=marker
+"vim: foldlevel=0

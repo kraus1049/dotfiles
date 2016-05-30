@@ -1,0 +1,15 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+rts = ''
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-sort-import'
