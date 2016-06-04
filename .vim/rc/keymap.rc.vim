@@ -118,12 +118,11 @@ nnoremap [toggle]h :<C-u>call ChangeModeHighLight()<CR>
 
 nnoremap [toggle]p :<C-u>call ChangeModeParenthesis()<CR>
 
-  augroup mode_etc
-    autocmd!
-    autocmd VimEnter * call ChangeModeSemicolon()
-    autocmd VimEnter * call ChangeModeHighLight()
-    autocmd VimEnter * call ChangeModeParenthesis()
-  augroup END
+augroup MyAutoCmd
+	autocmd VimEnter * call ChangeModeSemicolon()
+	autocmd VimEnter * call ChangeModeHighLight()
+	autocmd VimEnter * call ChangeModeParenthesis()
+augroup END
 
 "Changemodesemicolon(){{{
 function! ChangeModeSemicolon()
@@ -191,7 +190,6 @@ function! ChangeModeParenthesis()
   endif
 endfunction
 "}}}
-
 
 "---------------------------------------------------------------------------------------------------------------------------}}}
 

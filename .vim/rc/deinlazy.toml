@@ -384,7 +384,7 @@ on_map = ['<Plug>']
 [[plugins]]
 repo = 'haya14busa/incsearch-easymotion.vim'
 depends = ['vim-easymotion','incsearch.vim']
-on_map = ['/','<Plug>']
+on_map = ['<Plug>']
 on_i = 1
 
 [[plugins]]
@@ -486,6 +486,7 @@ on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
 repo = 'thinca/vim-ref'
 on_source = 'unite.vim'
 on_cmd = 'Ref'
+on_fmt = ['ruby',]
 
 [[plugins]]
 repo = 'ujihisa/ref-hoogle'

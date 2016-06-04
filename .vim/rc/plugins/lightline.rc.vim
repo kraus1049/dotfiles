@@ -1,31 +1,31 @@
 let g:lightline = {
-        \ 'colorscheme': 'powerline',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ],['currentagbar'] ],
+	\ 'colorscheme': 'powerline',
+	\ 'mode_map': {'c': 'NORMAL'},
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ],['currentagbar'] ],
 	\   'right': [['syntaxcheck'],['percent'],['tokei'],['fileencoding','filetype','fileformat'],['charcode']],
-        \ },
-        \ 'component_function': {
-        \   'modified': 'LightLineModified',
-        \   'readonly': 'LightLineReadonly',
-        \   'fugitive': 'LightLineFugitive',
-        \   'filename': 'LightLineFilename',
-        \   'fileformat': 'LightLineFileformat',
-        \   'filetype': 'LightLineFiletype',
-        \   'fileencoding': 'LightLineFileencoding',
-        \   'mode': 'MyMode',
+	\ },
+	\ 'component_function': {
+	\   'modified': 'LightLineModified',
+	\   'readonly': 'LightLineReadonly',
+	\   'fugitive': 'LightLineFugitive',
+	\   'filename': 'LightLineFilename',
+	\   'fileformat': 'LightLineFileformat',
+	\   'filetype': 'LightLineFiletype',
+	\   'fileencoding': 'LightLineFileencoding',
+	\   'mode': 'MyMode',
 	\   'tokei': 'Tokei_watch',
 	\   'charcode': 'MyCharCode',
 	\   'currentagbar': 'MyCurrentTag',
-        \ },
-        \ 'component_expand': {
-        \   'syntaxcheck': 'qfstatusline#Update',
-        \ },
-        \ 'component_type': {
-        \   'syntaxcheck': 'error',
-        \ },
-        \ 'subseparator': { 'left': '|', 'right': '|' },
-        \ }
+	\ },
+	\ 'component_expand': {
+	\   'syntaxcheck': 'qfstatusline#Update',
+	\ },
+	\ 'component_type': {
+	\   'syntaxcheck': 'error',
+	\ },
+	\ 'subseparator': { 'left': '|', 'right': '|' },
+	\ }
 
 function! MyMode() abort
   return &ft == 'unite' ? 'Unite' :

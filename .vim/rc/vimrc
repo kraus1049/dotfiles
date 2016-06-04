@@ -4,17 +4,24 @@ endif
 
 "s:source_rc {{{
 function! s:source_rc(path) abort
-  let l:fullpath = fnameescape(expand('$HOME/.vim/rc/' . a:path))
+	if IsDaxuePC() && IsUnix()
+		let l:rc_path = '$HOME/windows/.vim/rc/'
+	else
+		let l:rc_path = '$HOME/.vim/rc/'
+	endif
+
+  let l:fullpath = fnameescape(expand(l:rc_path . a:path))
 	if filereadable(l:fullpath)
     execute 'source' l:fullpath
 	else
-		"echomsg "cannot read " . a:path 
+		echomsg "cannot read " . l:fullpath
 	endif
 endfunction
 "}}}
 
 let s:is_windows = has('win16') || has('win32') || has('win64') || has('win95')
 let s:is_unix = has('unix')
+let s:is_daxue_PC = exists('g:daxue_PC') && g:daxue_PC != 0
 
 function! IsWindows() abort
   return s:is_windows
@@ -22,6 +29,10 @@ endfunction
 
 function! IsUnix() abort
   return s:is_unix
+endfunction
+
+function! IsDaxuePC() abort
+	return s:is_daxue_PC
 endfunction
 
 call s:source_rc('init.rc.vim')
@@ -37,8 +48,6 @@ call s:source_rc('search.rc.vim')
 call s:source_rc('edit.rc.vim')
 
 call s:source_rc('view.rc.vim')
-
-call s:source_rc('filetype.rc.vim')
 
 call s:source_rc('keymap.rc.vim')
 

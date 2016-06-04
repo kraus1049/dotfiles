@@ -13,3 +13,6 @@ repo = 'itchyny/vim-haskell-indent'
 
 [[plugins]]
 repo = 'itchyny/vim-haskell-sort-import'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'

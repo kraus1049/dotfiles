@@ -46,28 +46,34 @@ if IsWindows()
 endif
 
 " バックアップファイルを作成する{{{ 
-let s:bachupdir = expand('~/.vim/tmp/backup')
-let s:swapdir = expand('~/.vim/tmp/swap')
-let s:undodir = expand('~/.vim/tmp/undo')
+if IsDaxuePC()
+	set nobackup
+	set noswapfile
+	set noundofile
+else
+	let s:bachupdir = expand('~/.vim/tmp/backup')
+	let s:swapdir = expand('~/.vim/tmp/swap')
+	let s:undodir = expand('~/.vim/tmp/undo')
 
-if !isdirectory(s:bachupdir)
-	call mkdir(s:bachupdir, 'p')
+	if !isdirectory(s:bachupdir)
+		call mkdir(s:bachupdir, 'p')
+	endif
+
+	if !isdirectory(s:swapdir)
+		call mkdir(s:swapdir, 'p')
+	endif
+
+	if !isdirectory(s:undodir)
+		call mkdir(s:undodir, 'p')
+	endif
+
+	set backup
+	let &g:backupdir=s:bachupdir
+	set swapfile
+	let &g:directory=s:swapdir
+	set undofile
+	let &g:undodir=s:undodir
 endif
-
-if !isdirectory(s:swapdir)
-	call mkdir(s:swapdir, 'p')
-endif
-
-if !isdirectory(s:undodir)
-	call mkdir(s:undodir, 'p')
-endif
-
-set backup
-let &g:backupdir=s:bachupdir
-set swapfile
-let &g:directory=s:swapdir
-set undofile
-let &g:undodir=s:undodir
 "}}}
 
 "clipboard{{{
