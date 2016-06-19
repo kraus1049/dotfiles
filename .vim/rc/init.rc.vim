@@ -129,5 +129,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/vimrc'
+
 " vim: foldmethod=marker
 "vim: foldlevel=0

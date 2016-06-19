@@ -123,3 +123,6 @@ eval "$(rbenv init -)"
 source ~/.rubotorc
 # END Ruboto setup
 
+
+# added by travis gem
+[ -f /home/toshi/.travis/travis.sh ] && source /home/toshi/.travis/travis.sh
