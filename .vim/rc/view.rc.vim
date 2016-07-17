@@ -106,6 +106,7 @@ augroup MyAutoCmd
 augroup END
 
 set t_Co=256
+"set termguicolors
 colorscheme molokai
 
 " vim: foldmethod=marker

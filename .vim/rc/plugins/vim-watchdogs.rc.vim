@@ -70,7 +70,11 @@
   \   "haskell/watchdogs_checker" : {
   \       "type" : "watchdogs_checker/hlint",
   \   },
-  \   
+	\
+	\   "scala/watchdogs_checker" : {
+	\      "type" : "watchdogs_checker/scalac",
+	\   },
+  \
   \   "watchdogs_checker/msvc" : {
   \       "hook/msvc_compiler/enable" : 1,
   \       "hook/msvc_compiler/target" : "c:/program files/microsoft visual studio 10.0",
