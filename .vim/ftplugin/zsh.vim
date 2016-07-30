@@ -16,7 +16,7 @@ set cpo&vim
 
 let b:undo_ftplugin = "setl com< cms< fo<"
 
-setlocal comments=:# commentstring=#\ %s formatoptions-=t formatoptions+=croql
+setlocal comments=:# commentstring=#\ %s formatoptions-=t formatoptions+=cql
 
 let b:match_words =
       \   &matchpairs

@@ -19,7 +19,7 @@ set wildmenu
 
 set notimeout ttimeout ttimeoutlen=80
 
-set formatoptions=Macjlmq
+set formatoptions=Mcjlmq
 
 "他で保存されたら自動でロード
 set autoread

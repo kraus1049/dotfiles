@@ -40,7 +40,7 @@ if exists("loaded_matchit") && !exists("b:match_words")
 	\ "InstanceVariable\\|GlobalVariable\\|Symbol\\)\\>'"
 endif
 
-setlocal formatoptions-=t formatoptions+=croql
+setlocal formatoptions-=t formatoptions+=cql
 
 setlocal include=^\\s*\\<\\(load\\>\\\|require\\>\\\|autoload\\s*:\\=[\"']\\=\\h\\w*[\"']\\=,\\)
 setlocal includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.rb','')

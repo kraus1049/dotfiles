@@ -19,7 +19,7 @@ let b:undo_ftplugin = "setl fo< com< ofu< | if has('vms') | setl isk< | endif"
 
 " Set 'formatoptions' to break comment lines but not other lines,
 " and insert the comment leader when hitting <CR> or using "o".
-setlocal fo-=t fo+=croql
+setlocal fo-=t fo+=cql
 
 " Set completion with CTRL-X CTRL-O to autoloaded function.
 if exists('&ofu')

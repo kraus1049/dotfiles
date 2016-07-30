@@ -23,7 +23,7 @@ setlocal smarttab
 setlocal expandtab
 setlocal shiftwidth=4
 setlocal comments=s1fl:{-,mb:-,ex:-},:-- commentstring=--\ %s
-setlocal formatoptions-=t formatoptions+=croql
+setlocal formatoptions-=t formatoptions+=cql
 
 let &cpo = s:cpo_save
 unlet s:cpo_save

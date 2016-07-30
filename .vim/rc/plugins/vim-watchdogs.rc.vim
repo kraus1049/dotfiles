@@ -40,7 +40,7 @@
   \                          ],
   \     'exec': '%c %o %a %s',
   \   },
-  \
+	\
   \ "watchdogs_checker/_" : {
   \       "hook/inu/enable" : 1,
   \       "hook/unite_quickfix/enable" : 1,
