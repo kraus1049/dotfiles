@@ -126,3 +126,6 @@ source ~/.rubotorc
 
 # added by travis gem
 [ -f /home/toshi/.travis/travis.sh ] && source /home/toshi/.travis/travis.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

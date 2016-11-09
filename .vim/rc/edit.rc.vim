@@ -45,6 +45,10 @@ if IsWindows()
 	set imsearch=0
 endif
 
+if v:version >= 800
+	set breakindent
+endif
+
 " バックアップファイルを作成する{{{ 
 if IsDaxuePC()
 	set nobackup

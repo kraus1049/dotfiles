@@ -5,8 +5,8 @@ rts = ''
 [[plugins]]
 repo = 'tomasr/molokai'
 
-[[plugins]]
-repo = 'derekwyatt/vim-scala'
+# [[plugins]]
+# repo = 'derekwyatt/vim-scala'
 
 [[plugins]]
 repo = 'itchyny/vim-haskell-indent'
@@ -20,3 +20,6 @@ repo = 'vim-jp/vimdoc-ja'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]
+repo = 'elixir-lang/vim-elixir'

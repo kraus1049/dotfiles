@@ -67,6 +67,9 @@ export PATH=$PATH:~/.rbenv/versions/2.3.0-dev/bin
 export GOPATH=$HOME/program/go/third-party:$HOME/program/go/my-project
 export PATH=$HOME/program/go/third-party/bin:$HOME/program/go/my-project/bin:$PATH
 
+# export LIBGL_ALWAYS_INDIRECT=1
+# export DISPLAY=:0.0
+
 # export WINEPREFIX=~/.wine/win64/
 
 export TERM=xterm-256color
