@@ -123,9 +123,8 @@ endif
 
 augroup MyAutoCmd
   autocmd!
+  autocmd CursorHold *.toml syntax sync minlines=300
 augroup END
-
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/vimrc'
 
 " vim: foldmethod=marker
 "vim: foldlevel=0
