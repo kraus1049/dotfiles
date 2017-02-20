@@ -1,3 +1,5 @@
+"既知のバグ
+" filetypeをc,ruby,haskellにするとlightlineの色が消える。
 if 1
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/rc/vimrc'
 endif

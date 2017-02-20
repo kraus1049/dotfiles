@@ -1,25 +1,18 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+hook_source = 'source ~/.vim/plugins/dein.rc.vim'
 rts = ''
 
 [[plugins]]
 repo = 'tomasr/molokai'
 
-# [[plugins]]
-# repo = 'derekwyatt/vim-scala'
-
 [[plugins]]
 repo = 'itchyny/vim-haskell-indent'
 
-[[plugins]]
-repo = 'itchyny/vim-haskell-sort-import'
+# molokaiのカッコの色を変える設定が壊れる。
+# [[plugins]]
+# repo = 'nathanaelkane/vim-indent-guides'
+# hook_source = 'source ~/.vim/rc/plugins/vim-indent-guides.rc.vim'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'elixir-lang/vim-elixir'

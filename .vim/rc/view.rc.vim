@@ -5,9 +5,6 @@ highlight PmenuSbar ctermbg=2
 highlight PmenuThumb ctermbg=3
 "}}}
 
-if has('syntax')
-  syntax enable
-endif
 
 "ビープ音を鳴らさない
 set visualbell
@@ -102,7 +99,7 @@ endif
 "---------------------------------------------------------------------------------------------------------------------------}}}
 
 augroup MyAutoCmd
-	autocmd ColorScheme * highlight MatchParen ctermfg=208 ctermbg=233
+  autocmd ColorScheme * highlight MatchParen ctermfg=208 ctermbg=233
 augroup END
 
 set t_Co=256

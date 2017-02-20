@@ -2,10 +2,11 @@ let g:lightline = {
 	\ 'colorscheme': 'powerline',
 	\ 'mode_map': {'c': 'NORMAL'},
 	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ],['currentagbar'] ],
-	\   'right': [['syntaxcheck'],['percent'],['tokei'],['fileencoding','filetype','fileformat'],['charcode']],
+	\   'left': [ [ 'mode', 'paste' ], ['fugitive', 'filename'],['currentagbar'] ],
+	\   'right': [['syntaxcheck'],['lineinfo','percent'],['tokei'],['fileencoding','filetype','fileformat'],['charcode']],
 	\ },
 	\ 'component_function': {
+	\   'lineinfo': 'LightLineLineInfo',
 	\   'modified': 'LightLineModified',
 	\   'readonly': 'LightLineReadonly',
 	\   'fugitive': 'LightLineFugitive',
@@ -27,6 +28,13 @@ let g:lightline = {
 	\ 'subseparator': { 'left': '|', 'right': '|' },
 	\ }
 
+function! LightLineLineInfo() abort
+	if winwidth(0) > 50
+		return line(".") . ":" . col(".")
+	else
+		return ''
+endfunction
+
 function! MyMode() abort
   return &ft == 'unite' ? 'Unite' :
 	\ &ft == 'vimshell' ? 'VimShell' :
@@ -35,9 +43,13 @@ function! MyMode() abort
 	\ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-  function! MyCurrentTag()
-    return tagbar#currenttag('%s', '')
-  endfunction
+function! MyCurrentTag()
+	if winwidth(0) > 90
+		return tagbar#currenttag('%s', '')
+	else
+		return ''
+	endif
+endfunction
 
 function! MyCharCode() abort
   if winwidth('.') <= 70
@@ -75,7 +87,22 @@ function! MyCharCode() abort
 endfunction
 
 function! Tokei_watch() abort
-    return strftime("%x %H:%M ")
+  if exists("*strftime")
+		let a:winWidth = winwidth(0)
+		if a:winWidth > 140
+			return strftime("%x %T")
+		elseif a:winWidth > 125
+			return strftime("%x %H:%M")
+		elseif a:winWidth > 90
+			return strftime("%d日%H:%M")
+		elseif a:winWidth > 70
+			return strftime("%H:%M")
+		else
+			return ''
+		endif
+  else
+		return ''
+  endif
 endfunction
 
 function! LightLineModified() abort

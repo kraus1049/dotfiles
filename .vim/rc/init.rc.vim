@@ -1,6 +1,3 @@
-"TODO:easymotionの遅延読み込み設定の見直し。insert modeに入らずスラッシュ押す
-"とバグるし
-
 "TODO:kaoriyaのvimrcからコピペ、本当に必要かどうかまた今度精査する。{{{
 "---------------------------------------------------------------------------
 " ユーザ優先設定($HOME/.vimrc_first.vim)があれば読み込む。読み込んだ後に変数
@@ -124,7 +121,23 @@ endif
 augroup MyAutoCmd
   autocmd!
   autocmd CursorHold *.toml syntax sync minlines=300
+  autocmd FileType,Syntax,BufWinEnter *?
+        \ call vimrc#on_filetype()
 augroup END
+
+"dein.vimのセッティング
+let s:dein_dir = finddir('dein.vim', '.;')
+if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
+  if s:dein_dir == '' && &runtimepath !~ '/dein.vim'
+    let s:dein_dir = expand('~/.vim/dein')
+          \. '/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
+  endif
+  execute 'set runtimepath^=' . substitute(
+        \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
+endif
 
 " vim: foldmethod=marker
 "vim: foldlevel=0

@@ -1,23 +1,37 @@
-[[plugins]]
-repo = 'Shougo/neobundle.vim'
-
-#Unite{{{
+#Unite {{{
 [[plugins]]
 repo = 'Shougo/unite.vim'
+depends = ['neomru.vim','neoyank.vim','vimproc.vim']
+on_source = 'denite.nvim'
 hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
-on_cmd = 'Unite'
+hook_add = '''
+  nnoremap [unite] <Nop>
+  nmap <Space>u [unite]
+  nnoremap [unite]u :<C-u>Unite<Space>
+  nnoremap [unite]m :<C-u>Unite file_mru<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+hook_source = '''
+  let g:neomrm#follow_links = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+
+[[plugins]]
+repo = 'Shougo/unite-build'
+on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-build'
-on_source = 'unite.vim'
+repo = 'eagletmt/unite-haddock'
+on_ft = 'haskell'
 
 [[plugins]]
 repo = 'Shougo/unite-help'
@@ -72,7 +86,6 @@ on_source = 'unite.vim'
 [[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'
 depends = ['unite.vim','vimfiler.vim','vimshell.vim']
-on_map = ['<Plug>']
 
 [[plugins]]
 repo = 'daisuzu/unite-notmuch'
@@ -121,24 +134,67 @@ repo = 'osyo-manga/unite-highlight'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'eagletmt/unite-haddock'
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'mattn/startmenu-vim'
 on_source = 'unite.vim'
+# }}}
+
+# lightline {{{
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+depends = ['tagbar','vim-watchdogs','vim-fugitive','vim-gitgutter','vim-anzu']
+hook_source = 'source ~/.vim/rc/plugins/lightline.rc.vim'
+on_i = 1
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_source = 'unite.vim'
+repo = 'osyo-manga/vim-watchdogs'
+hook_source = 'source ~/.vim/rc/plugins/vim-watchdogs.rc.vim'
+depends = ['vim-quickrun', 'vimproc.vim', 'shabadou.vim', 'vim-hier', 'quickfixstatus', 'vim-qfstatusline', 'vim-qfsigns']
+on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell','java','tex','go']
 
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+depends = 'vimproc.vim'
+on_cmd = 'Quickrun'
+hook_source = 'source ~/.vim/rc/plugins/vim-quickrun.rc.vim'
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'cohama/vim-hier'
+
+[[plugins]]
+repo = 'dannyob/quickfixstatus'
+hook_source = 'source ~/.vim/rc/plugins/quickfixstatus.rc.vim'
+
+[[plugins]]
+repo = 'KazuakiM/vim-qfstatusline'
+
+[[plugins]]
+repo = 'KazuakiM/vim-qfsigns'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_source = 'source ~/.vim/rc/plugins/tagbar.rc.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Gw', 'Gblame', 'Gbrowse', 'Gcommit', 'Gdiff', 'Gedit']
+on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_cmd = ['GitGutter', 'GitGutterAll', 'GitGutterDisable', 'write' ,'edit']
+hook_source = 'source ~/.vim/rc/plugins/vim-gitgutter.rc.vim'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+on_map = {n = '<Plug>'}
 #}}}
 
-[[plugins]]
-repo = 'davidoc/taskpaper.vim'
-on_ft = 'taskpaper'
-
-#deoplete,neocomplete{{{
+# neocomplete {{{
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
@@ -148,29 +204,25 @@ on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+if = "has('lua')"
+on_event = 'InsertEnter'
 hook_source = 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
-depends = ['context_filetype.vim','vimproc.vim']
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
-disabled = '!has("lua")'
-on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
-on_source = 'neocomplete.vim'
+depends = ['vim-snippets','neosnippet-snippets', 'context_filetype.vim']
+on_event = 'InsertCharPre'
 on_ft = 'snippet'
-
+hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-on_source = 'neosnippet.vim'
 
 [[plugins]]
 repo = 'honza/vim-snippets'
-on_source = 'neosnippet.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-depends = 'neocomplete.vim'
 on_ft = 'vim'
 
 [[plugins]]
@@ -186,29 +238,6 @@ on_source = 'neocomplete.vim'
 repo = 'Shougo/neco-syntax'
 on_source = 'neocomplete.vim'
 
-[[plugins]]
-repo = 'osyo-manga/vim-marching'
-depends = 'neocomplete.vim'
-on_ft = ['c','cpp']
-
-# [[plugins]]
-# repo = 'justmao945/vim-clang'
-# depends = 'neocomplete.vim'
-# on_ft = ['c','cpp']
-
-[[plugins]]
-repo = 'eagletmt/neco-ghc'
-depends = 'vimproc.vim'
-on_source = 'neocomplete.vim'
-on_ft = 'haskell'
-
-[[plugins]]
-repo = 'artur-shaik/vim-javacomplete2'
-depends = 'neocomplete.vim'
-on_ft = 'java'
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/neopairs.vim'
@@ -218,132 +247,188 @@ on_source = 'neocomplete.vim'
 repo = 'Shougo/neoinclude.vim'
 on_source = 'neocomplete.vim'
 
+#}}}
+
+#vimshell {{{
 [[plugins]]
-repo = 'supermomonga/neocomplete-rsense.vim'
-on_source = 'neocomplete.vim'
-frozen = 1
+repo = 'Shougo/vimshell.vim'
+on_map = {n = '<Plug>'}
+on_if = "!has('nvim')"
+depends  = ['vimproc.vim']
+hook_source = 'source ~/.vim/rc/plugins/vimshell.rc.vim'
+hook_add = '''
+  noremap [vimshell] <Nop>
+  map <Space>v [VimShell]
+  nnoremap [VimShell]v :<C-u>VimShellBufferDir<CR>
+  nnoremap [VimShell]s :vs<CR>:<C-u>VimShellBufferDir<CR>
+  nnoremap [VimShell]t :<C-u>VimShellTab<CR>
+  nnoremap [VimShell]p :<C-u>VimShellPop<CR>
+  nnoremap [VimShell]i :<C-u>VimShellInteractive<Space>
+  nnoremap [VimShell]c :<C-u>VimShellCreate<CR>
+'''
+
+[[plugins]]
+repo = 'supermomonga/vimshell-pure.vim'
+on_source = 'vimshell.vim'
+
+#}}}
+
+#VimFiler {{{
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = ['unite.vim']
+on_map = {n = '<Plug>'}
+on_if = "isdirectory(bufname('%'))"
+hook_source = 'source ~/.vim/rc/plugins/vimFiler.rc.vim'
+hook_add = '''
+  noremap [VimFiler] <Nop>
+  map <Space>f [VimFiler]
+  noremap <silent> [VimFiler]f :<C-u>VimFiler<CR>
+  noremap <silent> [VimFiler]s :<C-u>VimFilerBufferDir -split -simple  -winwidth=35 -no-quit<CR>
+  noremap <silent> [VimFiler]d :<C-u>VimFilerDouble<CR>
+  noremap <silent> [VimFiler]t :<C-u>VimFilerTab<CR>
+'''
+#}}}
+
+#caw.vim {{{
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = {nv = '<Plug>'}
+hook_source = 'source ~/.vim/rc/plugins/caw.rc.vim'
+hook_add = '''
+nmap <C-J> <Plug>(caw:hatpos:toggle)
+vmap <C-J> <Plug>(caw:hatpos:toggle)
+'''
+on_i = 1
+#}}}
+
+#Haskell tool {{{
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+hook_source = 'source ~/.vim/rc/plugins/neco-ghc.rc.vim'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'eagletmt/ghcmod-vim'
+depends = ['vimproc.vim']
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'pbrisbin/vim-syntax-shakespeare'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-sort-import'
+on_ft = 'haskell'
+
+# [[plugins]]
+# repo = 'ujihisa/ref-hoogle'
+# depends = 'thinca/vim-ref'
+# on_ft = 'haskell'
+#}}}
+
+#C/C++ tool {{{
+[[plugins]]
+repo = 'rhysd/vim-clang-format'
+hook_source = 'source ~/.vim/rc/plugins/vim-clang-format.rc.vim'
+on_ft = ['c','cpp']
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'osyo-manga/vim-marching'
+depends = 'neocomplete.vim'
+hook_source = 'source ~/.vim/rc/plugins/vim-marching.rc.vim'
+on_ft = ['c','cpp']
+#}}}
+
+#Ruby tool {{{
 
 [[plugins]]
 repo = 'osyo-manga/vim-monster'
 depends = 'neocomplete.vim'
+hook_source = 'source ~/.vim/rc/plugins/vim-monster.rc.vim'
 on_ft = 'ruby'
 if = "executable('rct-complete')"
 
-# [[plugins]]
-# repo = 'rhysd/neco-ruby-keyword-args'
-# depends = 'neocomplete.vim'
-# on_ft = 'ruby'
-# }}}
+#}}}
 
-#VimShell{{{
-[[plugins]]
-repo = 'Shougo/vimshell.vim'
-depends = ['vimproc.vim','vimshell-pure.vim']
-on_map = ['<Plug>']
-on_cmd = ['VimShell','VimShellPop','VimShellInteractive']
-frozen = 1
+#Java tool {{{
 
 [[plugins]]
-repo = 'supermomonga/vimshell-pure.vim'
+repo = 'artur-shaik/vim-javacomplete2'
+depends = 'neocomplete.vim'
+on_ft = 'java'
+
+[[plugins]]
+repo = 'kamichidu/vim-ref-java'
+depends = 'vim-ref'
+on_ft = 'java'
 
 #}}}
 
+#Tex {{{
 [[plugins]]
-repo = 'NigoroJr/rsense'
-on_source = 'neocomplete.vim'
+repo = 'lervag/vimtex'
+hook_source = 'source ~/.vim/rc/plugins/vimtex.rc.vim'
+on_ft = ['plaintex','tex']
+#}}}
+
+#Go tool{{{
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_source = 'source ~/.vim/rc/plugins/vim-go.rc.vim'
+on_ft = 'go'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_source = 'source ~/.vim/rc/plugins/lightline.rc.vim'
-on_i = 1
+repo = 'vim-jp/vim-go-extra'
+on_ft = 'go'
+#}}}
+
+#scala tool {{{
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+#}}}
+
+#elixir tool {{{
+[[plugins]]
+repo = 'elixir-lang/vim-elixir'
+#}}}
+
+#other programing tool{{{
 
 [[plugins]]
-repo = 'osyo-manga/vim-watchdogs'
-hook_source = 'source ~/.vim/rc/plugins/vim-watchdogs.rc.vim'
-depends = ['vim-quickrun', 'vimproc.vim', 'shabadou.vim', 'vim-hier', 'quickfixstatus', 'vim-qfstatusline', 'vim-qfsigns']
-on_source = 'lightline.vim'
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell','java','tex','go']
+repo = 'mattn/sonictemplate-vim'
+on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
 
 [[plugins]]
-repo = 'majutsushi/tagbar'
-on_source = 'lightline.vim'
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-on_cmd = ['VimFiler','VimFilerCurrentDir','VimFilerDouble','VimFilerExplorer','VimFilerSimple','VimFilerSplit','VimFilerTab']
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'Shougo/vinarise.vim'
-on_cmd = ['Vinarise','VinariseDump']
-on_map = ['<Plug>']
+repo = 'kien/ctrlp.vim'
+on_map = {n = '<Plug>'}
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell','java','tex','go']
 build = 'make'
 
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-depends = 'vimproc.vim'
-on_cmd = 'Quickrun'
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]] 
+repo = 'osyo-manga/vim-precious'
+on_source = 'context_filetype.vim'
+hook_source = 'source ~/.vim/rc/plugins/vim-precious.rc.vim'
 
 [[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
-[[plugins]]
-repo = 'cohama/vim-hier'
-
-[[plugins]]
-repo = 'rhysd/vim-clang-format'
-on_ft = ['c','cpp']
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'dannyob/quickfixstatus'
-
-[[plugins]]
-repo = 'KazuakiM/vim-qfstatusline'
-
-[[plugins]]
-repo = 'KazuakiM/vim-qfsigns'
-
-[[plugins]]
-repo = 'rking/ag.vim'
-on_cmd = ['Ag','AgBuffer','AgAdd']
-
-[[plugins]]
-repo = 'thinca/vim-fontzoom'
-on_cmd = 'Fontzoom'
-on_map = ['+','-']
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-on_cmd = ['OpenBrowser','OpenBrowserSearch']
-on_func = 'OpenBrowser'
-on_map = ['<Plug>(open-browser-)']
+repo = 'Shougo/echodoc.vim'
+on_i = 1
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
 on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'tyru/caw.vim'
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
-on_map = ['<Plug>']
-on_idle = 1
-
-[[plugins]]
-repo = 'yuratomo/w3m.vim'
-on_func = 'W3m'
-on_map = ['<Plug>']
-on_cmd = [ 'W3m', 'W3mSpilit', 'W3mVSpilit' ]
+on_map = {n = '<Plug>'}
 
 [[plugins]]
 repo = 'wesleyche/SrcExpl'
-on_func = 'SrcExpl'
-on_map = ['<Plug>']
+on_map = {n = '<Plug>'}
+hook_source = 'source ~/.vim/rc/plugins/SrcExpl.rc.vim'
 on_cmd = [ 'SrcExpl', 'SrcExplToggle']
 
 [[plugins]]
@@ -354,118 +439,36 @@ on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
 repo = 'mattn/benchvimrc-vim'
 on_cmd = 'BenchVimrc'
 
-#TweetVim{{{
-[[plugins]]
-repo = 'basyura/TweetVim'
-depends = ['unite.vim','twibill.vim', 'open-browser.vim', 'bitly.vim', 'webapi-vim', 'neco-tweetvim']
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'basyura/bitly.vim'
-
-[[plugins]] 
-repo = 'mattn/webapi-vim'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'basyura/twibill.vim'
-
-[[plugins]]
-repo = 'yomi322/neco-tweetvim'
-#}}}
-
 [[plugins]]
 repo = 'mattn/ideone-vim'
+hook_source = 'source ~/.vim/rc/plugins/ideone-vim.rc.vim'
 on_cmd = 'Ideone'
 
 [[plugins]]
-repo = 'Lokaltog/vim-easymotion'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'haya14busa/incsearch.vim'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'haya14busa/incsearch-easymotion.vim'
-depends = ['vim-easymotion','incsearch.vim']
-on_map = ['<Plug>']
-on_i = 1
+repo = 'Shougo/vinarise.vim'
+on_cmd = 'Vinarise'
+hook_source = 'source ~/.vim/rc/plugins/vinarise.rc.vim'
+on_source = ['unite.vim','vimfiler.vim']
+hook_add = 'let g:vinarise_enable_auto_detect = 1'
 
 [[plugins]]
 repo = 'mbbill/undotree'
 on_cmd = 'UndotreeToggle'
-on_map = ['<plug>']
+hook_source = 'source ~/.vim/rc/plugins/undotree.rc.vim'
+on_map = {n = '<plug>'}
 
 [[plugins]]
 repo = 'vim-scripts/diffchar.vim'
-on_map = ['<plug>']
-
-[[plugins]]
-repo = 'yuratomo/gmail.vim'
-on_cmd = ['Gmail','GmailCheckNewMail']
-
-[[plugins]]
-repo = 'yuratomo/weather.vim'
-on_cmd = 'Weather'
-
-[[plugins]]
-repo = 'kana/vim-smartword'
-on_map = ['<Plug>']
+hook_source = 'source ~/.vim/rc/plugins/diffchar.rc.vim'
+on_map = {n = '<plug>'}
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
-on_map = ['<Plug>(EasyAlign)']
-
-[[plugins]]
-repo = 'kana/vim-metarw'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'mattn/vim-metarw-gdrive'
-depends = 'vim-metarw'
-
-[[plugins]]
-repo = 'itchyny/calendar.vim'
-on_cmd = 'Calendar'
-
-[[plugins]]
-repo = 'kien/ctrlp.vim'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'supermomonga/shaberu.vim'
-on_cmd = 'ShaberuSay'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-on_source = 'lightline.vim'
-on_cmd = ['Gw', 'Gblame', 'Gbrowse', 'Gcommit', 'Gdiff', 'Gedit']
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-on_source = 'lightline.vim'
-on_cmd = ['GitGutter', 'GitGutterAll', 'GitGutterDisable', 'write' ,'edit']
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'osyo-manga/vim-anzu'
-on_source = 'lightline.vim'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'supermomonga/thingspast.vim'
-on_map = ['<Plug>']
-
-[[plugins]]
-repo = 'koron/chalice'
-on_cmd = 'Chalice'
+on_map = {n = '<Plug>'}
 
 [[plugins]]
 repo = 'rhysd/committia.vim'
-on_map = ['<Plug>']
+on_map = {n = '<Plug>'}
 
 [[plugins]]
 repo = 'cohama/agit.vim'
@@ -476,64 +479,131 @@ repo = 'idanarye/vim-merginal'
 on_cmd = 'Merginal'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-on_i = 1
-
-[[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
-
-# [[plugins]]
-# repo = 'itchyny/vim-haskell-indent'
-# on_ft = 'haskell'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
 on_source = 'unite.vim'
 on_cmd = 'Ref'
-on_fmt = ['ruby',]
-
-[[plugins]]
-repo = 'ujihisa/ref-hoogle'
-depends = 'thinca/vim-ref'
-on_ft = ['haskell']
-
-[[plugins]]
-repo = 'kamichidu/vim-ref-java'
-depends = 'vim-ref'
-on_ft = 'java'
 
 [[plugins]]
 repo = 'vimtaku/hl_matchit.vim'
 on_ft = ['vim','ruby']
 
-[[plugins]]
-repo = 'eagletmt/ghcmod-vim'
-on_ft = 'haskell'
+#}}}
+
+#others{{{
 
 [[plugins]]
-repo = 'lervag/vimtex'
-on_ft = ['plaintex','tex']
+repo = 'Shougo/neobundle.vim'
+
+#TweetVim{{{
+[[plugins]]
+repo = 'basyura/TweetVim'
+depends = ['unite.vim','twibill.vim', 'open-browser.vim', 'bitly.vim', 'webapi-vim', 'neco-tweetvim']
+hook_source = 'source ~/.vim/rc/plugins/TweetVim.rc.vim'
+on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
+repo = 'basyura/bitly.vim'
+
+[[plugins]] 
+repo = 'mattn/webapi-vim'
+on_map = {n = '<Plug>'}
 
 [[plugins]]
-repo = 'vim-jp/vim-go-extra'
-on_ft = 'go'
+repo = 'basyura/twibill.vim'
 
 [[plugins]]
-repo = 'mattn/sonictemplate-vim'
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
+repo = 'yomi322/neco-tweetvim'
+#}}}
+
+[[plugins]]
+repo = 'davidoc/taskpaper.vim'
+on_ft = 'taskpaper'
 
 [[plugins]]
 repo = 'lilydjwg/fcitx.vim'
-disabled = '!has("python3")'
+on_if = 'has("python3")'
 on_i = 1
 
-#Game{{{
+[[plugins]]
+repo = 'rking/ag.vim'
+on_cmd = ['Ag','AgBuffer','AgAdd']
 
+[[plugins]]
+repo = 'thinca/vim-fontzoom'
+on_cmd = 'Fontzoom'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_cmd = ['OpenBrowser','OpenBrowserSearch']
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'yuratomo/gmail.vim'
+hook_source = 'source ~/.vim/rc/plugins/gmail.rc.vim'
+on_cmd = ['Gmail','GmailCheckNewMail']
+
+[[plugins]]
+repo = 'yuratomo/weather.vim'
+on_cmd = 'Weather'
+
+[[plugins]]
+repo = 'yuratomo/w3m.vim'
+on_map = {n = '<Plug>'}
+on_cmd = [ 'W3m', 'W3mSpilit', 'W3mVSpilit' ]
+
+[[plugins]]
+repo = 'kana/vim-smartword'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'kana/vim-metarw'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'mattn/vim-metarw-gdrive'
+depends = 'vim-metarw'
+
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+hook_source = 'source ~/.vim/rc/plugins/calender.rc.vim'
+on_cmd = 'Calendar'
+
+[[plugins]]
+repo = 'supermomonga/shaberu.vim'
+hook_source = 'source ~/.vim/rc/plugins/shaberu.rc.vim'
+on_cmd = 'ShaberuSay'
+
+[[plugins]]
+repo = 'supermomonga/thingspast.vim'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'koron/chalice'
+on_cmd = 'Chalice'
+
+#easymotion{{{
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+hook_source = 'source ~/.vim/rc/plugins/vim-easymotion.rc.vim'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'haya14busa/incsearch-easymotion.vim'
+depends = ['vim-easymotion','incsearch.vim']
+on_map = {n = '<Plug>'}
+on_i = 1
+#}}}
+
+#Game{{{
 [[plugins]]
 repo = 'katono/rogue.vim'
 on_cmd = ['Rogue', 'RogueRestore', 'RogueResume', 'RogueScores']
@@ -566,6 +636,9 @@ on_cmd = 'DuzzleStart'
 [[plugins]]
 repo = 'koron/maze3d-vim'
 on_cmd = 'Maze3DStart'
+#}}}
+
+
 #}}}
 
 #ColorScheme{{{
@@ -916,6 +989,10 @@ repo = 'yomi322/vim-operator-suddendeath'
 on_i = 1
 
 #}}}
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
 
 #vim: foldmethod=marker
 #vim: foldlevel=0

@@ -2,7 +2,10 @@ if &compatible
   set nocompatible
 endif
 
-let s:is_windows = has('win16') || has('win32') || has('win64') || has('win95')
+filetype off
+filetype plugin indent off
+
+let s:is_windows = has('win32') || has('win64') || has('win95')
 let s:is_unix = has('unix')
 let s:is_daxue_PC = exists('g:daxue_PC') && g:daxue_PC != 0
 
@@ -43,12 +46,16 @@ function! s:source_rc(path, ...) abort
 endfunction"}}}
 
 if has('vim_starting')
-	call s:source_rc('init.rc.vim')
+  call s:source_rc('init.rc.vim')
 endif
 
 call s:source_rc('dein.rc.vim')
 
 call s:source_rc('plugins.rc.vim')
+
+if has('vim_starting')
+  call vimrc#on_filetype()
+endif
 
 if !has('vim_starting')
   call dein#call_hook('source')
@@ -67,6 +74,8 @@ call s:source_rc('edit.rc.vim')
 call s:source_rc('view.rc.vim')
 
 call s:source_rc('keymap.rc.vim')
+
+set secure
 
 "vim: foldmethod=marker
 "vim: foldlevel=0
