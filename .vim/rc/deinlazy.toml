@@ -143,6 +143,14 @@ on_source = 'unite.vim'
 repo = 'itchyny/lightline.vim'
 depends = ['tagbar','vim-watchdogs','vim-fugitive','vim-gitgutter','vim-anzu']
 hook_source = 'source ~/.vim/rc/plugins/lightline.rc.vim'
+#setfiletype hogeするとステータスバーが真っ黒になる謎の現象の対処策
+#本来は元を叩くべきだけどこんだけプラグイン多いと原因がわかんね〜
+#neocompleteを消すと上手くいく...。
+hook_post_source = '''
+  augroup MyAutoCmd
+    autocmd FileType * call lightline#colorscheme()
+  augroup END
+'''
 on_i = 1
 
 [[plugins]]
@@ -300,9 +308,9 @@ nmap <C-J> <Plug>(caw:hatpos:toggle)
 vmap <C-J> <Plug>(caw:hatpos:toggle)
 '''
 on_i = 1
-#}}}
+# #}}}
 
-#Haskell tool {{{
+# Haskell tool {{{
 [[plugins]]
 repo = 'eagletmt/neco-ghc'
 hook_source = 'source ~/.vim/rc/plugins/neco-ghc.rc.vim'
@@ -321,10 +329,9 @@ on_ft = 'haskell'
 repo = 'itchyny/vim-haskell-sort-import'
 on_ft = 'haskell'
 
-# [[plugins]]
-# repo = 'ujihisa/ref-hoogle'
-# depends = 'thinca/vim-ref'
-# on_ft = 'haskell'
+[[plugins]]
+repo = 'ujihisa/ref-hoogle'
+on_ft = 'haskell'
 #}}}
 
 #C/C++ tool {{{
@@ -387,11 +394,13 @@ on_ft = 'go'
 #scala tool {{{
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
+on_ft = 'scala'
 #}}}
 
 #elixir tool {{{
 [[plugins]]
 repo = 'elixir-lang/vim-elixir'
+on_ft = 'elixir'
 #}}}
 
 #other programing tool{{{
@@ -482,9 +491,10 @@ on_cmd = 'Merginal'
 repo = 'tpope/vim-endwise'
 on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
 
+#ref-hoogle側にdepends記述ではエラーが出た。
 [[plugins]]
 repo = 'thinca/vim-ref'
-on_source = 'unite.vim'
+on_source = ['unite.vim','ref-hoogle']
 on_cmd = 'Ref'
 
 [[plugins]]
