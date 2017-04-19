@@ -1,6 +1,7 @@
 #!/bin/bash
 DOT_FILES="${HOME}/dotfiles"
 DOT_FILES_VIM="${DOT_FILES}/.vim"
+HOME_VIM="${HOME}/.vim"
 
 cd ${DOT_FILES}
 for f in .??*; do
@@ -10,8 +11,8 @@ for f in .??*; do
 	ln -snfv ${DOT_FILES}/${f} ${HOME}/${f}
 done
 
-if [ ! -e ${DOT_FILES_VIM} ]; then
-	mkdir $DOT_FILES_VIM
+if [ ! -e ${HOME_VIM} ]; then
+	mkdir $HOME_VIM
 fi
 
 cd ${DOT_FILES_VIM}
