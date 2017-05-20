@@ -47,6 +47,7 @@ let g:latex_latexmk_options = '-pdfdvi'
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+let g:tex_conceal=''
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

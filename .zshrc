@@ -53,20 +53,6 @@ plugins=(cabal chruby copydir copyfile cp emoji emoji-clock gem git-extras git-f
 
 # User configuration
 
-export ANDROID_HOME=$HOME/Android/Sdk/
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export PATH=$PATH:~/$ANDROID_HOME/tools:
-# export PATH=$PATH:~/$ANDROID_HOME/platform-tools
-# export PATH=$PATH:~/$ANDROID_HOME/build-tools/23.0.2
-export PATH=~/.local/bin:$PATH
-export PATH=~/.local/share/umake/scala/scala-lang/bin:$PATH
-export PATH=$PATH:~/.stack/programs/x86_64-linux/ghc-7.10.3/bin
-export PATH=$PATH:~/.stack/snapshots/x86_64-linux/lts-5.14/7.10.3/bin
-export PATH=$PATH:~/.rbenv/versions/2.3.0-dev/bin
-# export MANPATH="/usr/local/man:$MANPATH"
-
-export GOPATH=$HOME/program/go/third-party:$HOME/program/go/my-project
-export PATH=$HOME/program/go/third-party/bin:$HOME/program/go/my-project/bin:$PATH
 
 # export LIBGL_ALWAYS_INDIRECT=1
 # export DISPLAY=:0.0
@@ -100,6 +86,8 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source $HOME/.profile
+source $HOME/.zprofile
 source $ZSH/oh-my-zsh.sh
 
 # added by travis gem

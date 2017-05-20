@@ -115,17 +115,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 
 # BEGIN Ruboto setup
-source ~/.rubotorc
+# source ~/.rubotorc
 # END Ruboto setup
 
 
 # added by travis gem
 [ -f /home/toshi/.travis/travis.sh ] && source /home/toshi/.travis/travis.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"

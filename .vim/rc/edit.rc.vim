@@ -82,6 +82,7 @@ endif
 
 "clipboard{{{
 if (!has('nvim') || $DISPLAY != '') && has('clipboard')
+	set clipboard&
   if has('unnamedplus')
     set clipboard=unnamedplus,autoselect
   else

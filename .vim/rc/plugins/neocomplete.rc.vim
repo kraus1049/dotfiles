@@ -20,7 +20,8 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'vimshell' : $HOME . '/.cache/vimshell/command-history',
 		\ 'scala' : $HOME . '/.vim/dict/scala.dict',
 		\ 'ruby' : $HOME . '/.vim/dict/ruby.dict',
-		\ 'verilog' : $HOME . '/.vim/dict/verilog.dict'
+		\ 'verilog' : $HOME . '/.vim/dict/verilog.dict',
+		\ 'tex' : $HOME . '/.vim/dict/tex.dict',
         \ }
 
 

@@ -1,12 +1,12 @@
 " jkを普通のエディタと同じに{{{
-" noremap j gj
-" noremap gj j
-" xnoremap j gj
-" xnoremap gj j
-" noremap k gk
-" noremap gk k
-" xnoremap k gk
-" xnoremap gk k
+noremap j gj
+noremap gj j
+xnoremap j gj
+xnoremap gj j
+noremap k gk
+noremap gk k
+xnoremap k gk
+xnoremap gk k
 "}}}
 
 "windowの操作---------------------------------------------------------------------------------------------------------------------------{{{
