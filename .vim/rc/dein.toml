@@ -16,4 +16,3 @@ repo = 'itchyny/vim-haskell-indent'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
-

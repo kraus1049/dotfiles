@@ -1,4 +1,4 @@
-let g:vimtex_enabled = 1
+let g:vimtex_enabled=1
 
 let g:vimtex_compiler_latexmk = {}
 let g:vimtex_compiler_latexmk['background'] = 1

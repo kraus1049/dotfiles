@@ -705,300 +705,300 @@ repo = 'changyuheng/color-scheme-holokai-for-vim'
 on_source = 'unite-colorscheme'
 #}}}
 
-#textobj{{{ 
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-on_i = 1
+# #textobj{{{ 
+# [[plugins]]
+# repo = 'kana/vim-textobj-user'
+# on_i = 1
 
-# バッファ全体 ae ie
-[[plugins]]
-repo = 'kana/vim-textobj-entire'
-depends = 'vim-textobj-user'
-on_i = 1
+# # バッファ全体 ae ie
+# [[plugins]]
+# repo = 'kana/vim-textobj-entire'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# カーソル行 al il
-[[plugins]]
-repo = 'kana/vim-textobj-line'
-depends = 'vim-textobj-user'
-on_i = 1
+# # カーソル行 al il
+# [[plugins]]
+# repo = 'kana/vim-textobj-line'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 関数内 aF iF
-[[plugins]]
-repo = 'kana/vim-textobj-function'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 関数内 aF iF
+# [[plugins]]
+# repo = 'kana/vim-textobj-function'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-#シンタックス ay iy
-[[plugins]]
-repo = 'kana/vim-textobj-syntax'
-depends = 'vim-textobj-user'
-on_i = 1
+# #シンタックス ay iy
+# [[plugins]]
+# repo = 'kana/vim-textobj-syntax'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 「foo」 or 【bar】など ajk ijk ajt ijt
-[[plugins]]
-repo = 'kana/vim-textobj-jabraces'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 「foo」 or 【bar】など ajk ijk ajt ijt
+# [[plugins]]
+# repo = 'kana/vim-textobj-jabraces'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 最後に検索されたパターン a/ i/ a? i?
-[[plugins]]
-repo = 'kana/vim-textobj-lastpat'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 最後に検索されたパターン a/ i/ a? i?
+# [[plugins]]
+# repo = 'kana/vim-textobj-lastpat'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# カーソル位置と同じインデント ai ii aI iI
-[[plugins]]
-repo = 'kana/vim-textobj-indent'
-depends = 'vim-textobj-user'
-on_i = 1
+# # カーソル位置と同じインデント ai ii aI iI
+# [[plugins]]
+# repo = 'kana/vim-textobj-indent'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# fold az iz
-[[plugins]]
-repo = 'kana/vim-textobj-fold'
-depends = 'vim-textobj-user'
-on_i = 1
+# # fold az iz
+# [[plugins]]
+# repo = 'kana/vim-textobj-fold'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 日付と時刻
-[[plugins]]
-repo = 'kana/vim-textobj-datetime'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 日付と時刻
+# [[plugins]]
+# repo = 'kana/vim-textobj-datetime'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# django_template
-[[plugins]]
-repo = 'kana/vim-textobj-django-template'
-depends = 'vim-textobj-user'
-on_i = 1
+# # django_template
+# [[plugins]]
+# repo = 'kana/vim-textobj-django-template'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-#任意の区切り文字
-[[plugins]]
-repo = 'thinca/vim-textobj-between'
-depends = 'vim-textobj-user'
-on_i = 1
+# #任意の区切り文字
+# [[plugins]]
+# repo = 'thinca/vim-textobj-between'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-#コメント
-[[plugins]]
-repo = 'thinca/vim-textobj-comment'
-depends = 'vim-textobj-user'
-on_i = 1
+# #コメント
+# [[plugins]]
+# repo = 'thinca/vim-textobj-comment'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# JavaScript の関数内
-[[plugins]]
-repo = 'thinca/vim-textobj-function-javascript'
-depends = 'vim-textobj-user'
-on_i = 1
+# # JavaScript の関数内
+# [[plugins]]
+# repo = 'thinca/vim-textobj-function-javascript'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# Perl の関数内
-[[plugins]]
-repo = 'thinca/vim-textobj-function-perl'
-depends = 'vim-textobj-user'
-on_i = 1
+# # Perl の関数内
+# [[plugins]]
+# repo = 'thinca/vim-textobj-function-perl'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 直前に変更またはヤンクされたテキスト
-[[plugins]]
-repo = 'gilligan/textobj-lastpaste'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 直前に変更またはヤンクされたテキスト
+# [[plugins]]
+# repo = 'gilligan/textobj-lastpaste'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# ASCII文字とマルチバイト文字の境界を区切り
-[[plugins]]
-repo = 'deton/textobj-mbboundary.vim'
-depends = 'vim-textobj-user'
-on_i = 1
+# # ASCII文字とマルチバイト文字の境界を区切り
+# [[plugins]]
+# repo = 'deton/textobj-mbboundary.vim'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# XML の属性
-[[plugins]]
-repo = 'akiyan/vim-textobj-xml-attribute'
-depends = 'vim-textobj-user'
-on_i = 1
+# # XML の属性
+# [[plugins]]
+# repo = 'akiyan/vim-textobj-xml-attribute'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# phpタグに囲まれた部分
-[[plugins]]
-repo = 'akiyan/vim-textobj-php'
-depends = 'vim-textobj-user'
-on_i = 1
+# # phpタグに囲まれた部分
+# [[plugins]]
+# repo = 'akiyan/vim-textobj-php'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 連続したスペース
-[[plugins]]
-repo = 'saihoooooooo/vim-textobj-space'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 連続したスペース
+# [[plugins]]
+# repo = 'saihoooooooo/vim-textobj-space'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# URL
-[[plugins]]
-repo = 'mattn/vim-textobj-url'
-depends = 'vim-textobj-user'
-on_i = 1
+# # URL
+# [[plugins]]
+# repo = 'mattn/vim-textobj-url'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# snake_case 上の word
-[[plugins]]
-repo = 'h1mesuke/textobj-wiw'
-depends = 'vim-textobj-user'
-on_i = 1
+# # snake_case 上の word
+# [[plugins]]
+# repo = 'h1mesuke/textobj-wiw'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# テキストオブジェクトとして最後に挿入された範囲
-[[plugins]]
-repo = 'rhysd/vim-textobj-lastinserted'
-depends = 'vim-textobj-user'
-on_i = 1
+# # テキストオブジェクトとして最後に挿入された範囲
+# [[plugins]]
+# repo = 'rhysd/vim-textobj-lastinserted'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 行継続を用いている行
-[[plugins]]
-repo = 'rhysd/vim-textobj-continuous-line'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 行継続を用いている行
+# [[plugins]]
+# repo = 'rhysd/vim-textobj-continuous-line'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# Ruby のブロック ar ir
-[[plugins]]
-repo = 'rhysd/vim-textobj-ruby'
-depends = 'vim-textobj-user'
-on_i = 1
+# # Ruby のブロック ar ir
+# [[plugins]]
+# repo = 'rhysd/vim-textobj-ruby'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 任意の2つの motion の間
-[[plugins]]
-repo = 'hchbaw/textobj-motionmotion.vim'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 任意の2つの motion の間
+# [[plugins]]
+# repo = 'hchbaw/textobj-motionmotion.vim'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# Perl や Ruby の正規表現
-[[plugins]]
-repo = 'deris/vim-textobj-enclosedsyntax'
-depends = 'vim-textobj-user'
-on_i = 1
+# # Perl や Ruby の正規表現
+# [[plugins]]
+# repo = 'deris/vim-textobj-enclosedsyntax'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 行の先頭の word
-[[plugins]]
-repo = 'deris/vim-textobj-headwordofline'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 行の先頭の word
+# [[plugins]]
+# repo = 'deris/vim-textobj-headwordofline'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# LaTeX
-[[plugins]]
-repo = 'rbonvall/vim-textobj-latex'
-depends = 'vim-textobj-user'
-on_i = 1
+# # LaTeX
+# [[plugins]]
+# repo = 'rbonvall/vim-textobj-latex'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 関数の引数
-[[plugins]]
-repo = 'sgur/vim-textobj-parameter'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 関数の引数
+# [[plugins]]
+# repo = 'sgur/vim-textobj-parameter'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 前後のスペースを取り除いたカーソル行
-[[plugins]]
-repo = 'mattn/vim-textobj-cell'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 前後のスペースを取り除いたカーソル行
+# [[plugins]]
+# repo = 'mattn/vim-textobj-cell'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 別の filetype のコンテキスト
-[[plugins]]
-repo = 'osyo-manga/vim-textobj-context'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 別の filetype のコンテキスト
+# [[plugins]]
+# repo = 'osyo-manga/vim-textobj-context'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# 任意の複数の括弧のいずれか
-[[plugins]]
-repo = 'osyo-manga/vim-textobj-multiblock'
-depends = 'vim-textobj-user'
-on_i = 1
+# # 任意の複数の括弧のいずれか
+# [[plugins]]
+# repo = 'osyo-manga/vim-textobj-multiblock'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# インデントの空白行
-[[plugins]]
-repo = 'glts/vim-textobj-indblock'
-depends = 'vim-textobj-user'
-on_i = 1
+# # インデントの空白行
+# [[plugins]]
+# repo = 'glts/vim-textobj-indblock'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# ダッシュ記号の間
-[[plugins]]
-repo = 'RyanMcG/vim-textobj-dash'
-depends = 'vim-textobj-user'
-on_i = 1
+# # ダッシュ記号の間
+# [[plugins]]
+# repo = 'RyanMcG/vim-textobj-dash'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# Python
-[[plugins]]
-repo = 'bps/vim-textobj-python'
-depends = 'vim-textobj-user'
-on_i = 1
+# # Python
+# [[plugins]]
+# repo = 'bps/vim-textobj-python'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# ifdef
-[[plugins]]
-repo = 'anyakichi/vim-textobj-ifdef'
-depends = 'vim-textobj-user'
-on_i = 1
+# # ifdef
+# [[plugins]]
+# repo = 'anyakichi/vim-textobj-ifdef'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-# HTML
-[[plugins]]
-repo = 'mjbrownie/html-textobjects'
-depends = 'vim-textobj-user'
-on_i = 1
+# # HTML
+# [[plugins]]
+# repo = 'mjbrownie/html-textobjects'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
 
-[[plugins]]
-repo = 'osyo-manga/vim-textobj-blockwise'
-depends = 'vim-textobj-user'
-on_i = 1
+# [[plugins]]
+# repo = 'osyo-manga/vim-textobj-blockwise'
+# depends = 'vim-textobj-user'
+# on_i = 1
 
-#}}}
+# #}}}
 
-#operator{{{
+# #operator{{{
 
-[[plugins]]
-repo = 'kana/vim-operator-user'
-on_i = 1
+# [[plugins]]
+# repo = 'kana/vim-operator-user'
+# on_i = 1
 
-[[plugins]]
-repo = 'emonkak/vim-operator-comment'
-on_i = 1
+# [[plugins]]
+# repo = 'emonkak/vim-operator-comment'
+# on_i = 1
 
-[[plugins]]
-repo = 'tyru/operator-camelize.vim'
-on_i = 1
+# [[plugins]]
+# repo = 'tyru/operator-camelize.vim'
+# on_i = 1
 
-[[plugins]]
-repo = 'kana/vim-operator-replace'
-on_i = 1
+# [[plugins]]
+# repo = 'kana/vim-operator-replace'
+# on_i = 1
 
-[[plugins]]
-repo = 'rhysd/vim-operator-surround'
-on_i = 1
+# [[plugins]]
+# repo = 'rhysd/vim-operator-surround'
+# on_i = 1
 
-[[plugins]]
-repo = 'emonkak/vim-operator-sort'
-on_i = 1
+# [[plugins]]
+# repo = 'emonkak/vim-operator-sort'
+# on_i = 1
 
-[[plugins]]
-repo = 'pekepeke/vim-operator-shuffle'
-on_i = 1
+# [[plugins]]
+# repo = 'pekepeke/vim-operator-shuffle'
+# on_i = 1
 
-[[plugins]]
-repo = 'rhysd/vim-operator-evalruby'
-on_i = 1
+# [[plugins]]
+# repo = 'rhysd/vim-operator-evalruby'
+# on_i = 1
 
-[[plugins]]
-repo = 'rhysd/vim-operator-filled-with-blank'
-on_i = 1
+# [[plugins]]
+# repo = 'rhysd/vim-operator-filled-with-blank'
+# on_i = 1
 
-[[plugins]]
-repo = 'rhysd/vim-operator-trailingspace-killer'
-on_i = 1
+# [[plugins]]
+# repo = 'rhysd/vim-operator-trailingspace-killer'
+# on_i = 1
 
-[[plugins]]
-repo = 'sgur/vim-operator-openbrowser'
-on_i = 1
+# [[plugins]]
+# repo = 'sgur/vim-operator-openbrowser'
+# on_i = 1
 
-[[plugins]]
-repo = 'tek/vim-operator-ag'
-on_i = 1
+# [[plugins]]
+# repo = 'tek/vim-operator-ag'
+# on_i = 1
 
-[[plugins]]
-repo = 'tyru/operator-reverse.vim'
-on_i = 1
+# [[plugins]]
+# repo = 'tyru/operator-reverse.vim'
+# on_i = 1
 
-[[plugins]]
-repo = 'yomi322/vim-operator-suddendeath'
-on_i = 1
+# [[plugins]]
+# repo = 'yomi322/vim-operator-suddendeath'
+# on_i = 1
 
-#}}}
+# #}}}
 
 [[plugins]]
 repo = 'cespare/vim-toml'

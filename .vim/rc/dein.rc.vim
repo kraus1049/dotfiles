@@ -5,13 +5,19 @@ let s:toml_lazy_path = '~/.vim/rc/deinlazy.toml'
 let s:toml_neo_path = '~/.vim/rc/deineo.toml'
 let s:toml_filetype_path = '~/.vim/rc/deinft.toml'
 
+let s:toml_testpath = '~/.vim/rc/deintest.toml'
+
 if !dein#load_state(s:path)
   finish
 endif
 
 call dein#begin(s:path, expand('<sfile>'))
-  call dein#load_toml(s:toml_path, {'lazy': 0})
-  call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
+	if !g:my_vimrc_test
+		call dein#load_toml(s:toml_path, {'lazy': 0})
+		call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
+	else
+		call dein#add('lervag/vimtex')
+	endif
 
   if has('nvim')
     call dein#load_toml(s:toml_neo_path, {})
@@ -30,3 +36,6 @@ call dein#save_state()
 if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
+
+filetype plugin indent on
+syntax enable

@@ -13,3 +13,5 @@ endif
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
+
+call unite#custom#profile('default', 'context', {'start_insert' : 1})

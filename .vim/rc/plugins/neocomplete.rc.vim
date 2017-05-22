@@ -47,8 +47,21 @@ let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'
 if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.tex = "\\cite{\s*[0-9A-Za-z_:]*\|\\ref{\s*[0-9A-Za-z_:]*"
 
+let g:neocomplete#sources#omni#input_patterns.tex =
+			\ '\v\\%('
+			\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+			\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+			\ . '|hyperref\s*\[[^]]*'
+			\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+			\ . '|%(include%(only)?|input)\s*\{[^}]*'
+			\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+			\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+			\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+			\ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+			\ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+			\ . '|\a*'
+			\ . ')'
 
 if !exists('g:neocomplete#text_mode_filetypes')
   let g:neocomplete#text_mode_filetypes = {}
