@@ -52,6 +52,11 @@ if exists("loaded_matchit")
     \ '\<specify\>:\<endspecify\>'
 endif
 
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal expandtab
+
 " Reset 'cpoptions' back to the user's setting
 let &cpo = s:cpo_save
 unlet s:cpo_save

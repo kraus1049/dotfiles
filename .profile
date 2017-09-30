@@ -35,6 +35,7 @@ function safe_path() {
 		    "$scala/bin"
 		    "$rust/cargo/bin"
 		    "$rust/rustc/bin"
+		    "$HOME/.cargo/bin"
 		    "$go/bin"
 		    "$HOME/program/go/my-project/bin"
 		    "$HOME/program/go/third-party/bin"
@@ -55,3 +56,4 @@ function safe_path() {
 }
 
 safe_path
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"

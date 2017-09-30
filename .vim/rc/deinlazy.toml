@@ -403,6 +403,18 @@ repo = 'elixir-lang/vim-elixir'
 on_ft = 'elixir'
 #}}}
 
+#rust tool {{{
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_source = 'source ~/.vim/rc/plugins/rust.rc.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+hook_source = 'source ~/.vim/rc/plugins/vim-racer.rc.vim'
+on_ft = 'rust'
+#}}}
+
 #other programing tool{{{
 
 [[plugins]]
