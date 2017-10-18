@@ -20,21 +20,21 @@ function safe_path() {
 	local local="$HOME/.local"
 	local umake="$local/share/umake"
 	local scala="$umake/scala/scala-lang"
-	local rust="$umake/rust/rust-lang"
+	# local rust="$umake/rust/rust-lang"
 	local go="$umake/go/go-lang"
 
 	export GOPATH=$HOME/program/go/third-party:$HOME/program/go/my-project
 	export GOROOT=$go
 	export SCALA_HOME=$scala
-	export LD_LIBRARY_PATH=$rust/rustc/lib
+	# export LD_LIBRARY_PATH=$rust/rustc/lib
 
 	#優先度高いものほど下へ
 	path_cands=( /usr/local/heroku/bin
 		    "$HOME/.rbenv/versions/2.3.0-dev/bin"
 		    "$HOME/.rbenv/bin"
 		    "$scala/bin"
-		    "$rust/cargo/bin"
-		    "$rust/rustc/bin"
+		    # "$rust/cargo/bin"
+		    # "$rust/rustc/bin"
 		    "$HOME/.cargo/bin"
 		    "$go/bin"
 		    "$HOME/program/go/my-project/bin"
