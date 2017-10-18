@@ -15,3 +15,15 @@ let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
 call unite#custom#profile('default', 'context', {'start_insert' : 1})
+
+call unite#custom#profile('source/file', 'context', {
+\   'direction' : 'dynamictop',
+\   'winwidth'  : 35,
+\   'no_quit'   : 0,
+\   'vertical'  : 1
+\ })
+
+call unite#custom#profile('source/outline', 'context', {
+\   'direction' : 'dynamicbottom',
+\   'vertical'  : 1
+\ })

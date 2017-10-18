@@ -49,6 +49,9 @@ if v:version >= 800
   set breakindent
 endif
 
+" set splitbelow
+set splitright
+
 " バックアップファイルを作成する{{{ 
 if IsDaxuePC()
   set nobackup

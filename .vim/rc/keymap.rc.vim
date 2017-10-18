@@ -33,9 +33,15 @@ nnoremap <silent> <Space>lc  :<C-u> !latexmk %<CR>
 nnoremap <silent> <Space>cf  :<C-u>ClangFormat<CR>
 nnoremap <silent> <Space>cl  :<C-u>close<CR>
 
+nnoremap [changeMode] <Nop>
+nmap <Space>m [changeMode]
+nnoremap [changeMode]h :<C-u>call vimrc#changeModeHighLight()<CR>
+nnoremap [changeMode]p :<C-u>call vimrc#changeModeParenthesis()<CR>
+nnoremap [changeMode]; :<C-u>call vimrc#changeModeSemicolon()<CR>
+
 augroup MyAutoCmd
-	autocmd VimEnter * silent! call vimrc#changeModeSemicolon()
-	autocmd VimEnter * silent! call vimrc#changeModeHighLight()
+	" autocmd VimEnter * silent! call vimrc#changeModeSemicolon()
+	" autocmd VimEnter * silent! call vimrc#changeModeHighLight()
 	autocmd VimEnter * silent! call vimrc#changeModeParenthesis()
 augroup END
 

@@ -9,6 +9,11 @@ hook_add = '''
   nmap <Space>u [unite]
   nnoremap [unite]u :<C-u>Unite<Space>
   nnoremap [unite]m :<C-u>Unite file_mru<CR>
+	nnoremap [unite]o :<C-u>Unite outline<CR>
+	nnoremap [unite]f :<C-u>Unite file<CR>
+	nnoremap [unite]b :<C-u>Unite buffer<CR>
+	nnoremap [unite]h :<C-u>Unite help<CR>
+	nnoremap [unite]l :<C-u>Unite line<CR>
 '''
 
 [[plugins]]
@@ -158,6 +163,7 @@ repo = 'osyo-manga/vim-watchdogs'
 hook_source = 'source ~/.vim/rc/plugins/vim-watchdogs.rc.vim'
 depends = ['vim-quickrun', 'vimproc.vim', 'shabadou.vim', 'vim-hier', 'quickfixstatus', 'vim-qfstatusline', 'vim-qfsigns']
 on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell','java','tex','go']
+on_if = ['v:version < 800']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -413,6 +419,11 @@ on_ft = 'rust'
 repo = 'racer-rust/vim-racer'
 hook_source = 'source ~/.vim/rc/plugins/vim-racer.rc.vim'
 on_ft = 'rust'
+
+[[plugins]]
+repo = 'rhysd/rust-doc.vim'
+on_ft = 'rust'
+on_source = ['unite.vim']
 #}}}
 
 #other programing tool{{{
@@ -512,6 +523,11 @@ on_cmd = 'Ref'
 [[plugins]]
 repo = 'vimtaku/hl_matchit.vim'
 on_ft = ['vim','ruby']
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_source = 'source ~/.vim/rc/plugins/ale.rc.vim'
+on_if = 'has("job") && has("channel") && has ("timers")'
 
 #}}}
 
