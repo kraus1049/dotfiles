@@ -1,3 +1,5 @@
+scriptencoding UTF-8
+
 "TODO:kaoriyaのvimrcからコピペ、本当に必要かどうかまた今度精査する。{{{
 "---------------------------------------------------------------------------
 " ユーザ優先設定($HOME/.vimrc_first.vim)があれば読み込む。読み込んだ後に変数
@@ -45,7 +47,7 @@ if has('mac')
   set langmenu=japanese
 endif
 " 非GUI日本語コンソールを使っている場合の設定
-if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
+if !has('gui_running') && &encoding !=? 'cp932' && &term ==? 'win32'
   set termencoding=cp932
 endif
 "---------------------------------------------------------------------------
@@ -59,7 +61,7 @@ let g:no_vimrc_example = 0
 " Bram氏の提供する設定例をインクルード (別ファイル:vimrc_example.vim)。これ
 " 以前にg:no_vimrc_exampleに非0な値を設定しておけばインクルードはしない。
 if 1 && (!exists('g:no_vimrc_example') || g:no_vimrc_example == 0)
-  if &guioptions !~# "M"
+  if &guioptions !~# 'M'
     " vimrc_example.vimを読み込む時はguioptionsにMフラグをつけて、syntax on
     " やfiletype plugin onが引き起こすmenu.vimの読み込みを避ける。こうしない
     " とencに対応するメニューファイルが読み込まれてしまい、これの後で読み込
@@ -86,11 +88,11 @@ endif
 if !has ('nvim')
   if has('unix') && !has('gui_running')
     let s:uname = system('uname')
-    if s:uname =~? "linux"
+    if s:uname =~? 'linux'
       set term=builtin_linux
-    elseif s:uname =~? "freebsd"
+    elseif s:uname =~? 'freebsd'
       set term=builtin_cons25
-    elseif s:uname =~? "Darwin"
+    elseif s:uname =~? 'Darwin'
       set term=beos-ansi
     else
       set term=builtin_xterm
@@ -127,8 +129,8 @@ augroup END
 
 "dein.vimのセッティング
 let s:dein_dir = finddir('dein.vim', '.;')
-if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
-  if s:dein_dir == '' && &runtimepath !~ '/dein.vim'
+if s:dein_dir !=? '' || &runtimepath !~# '/dein.vim'
+  if s:dein_dir ==? '' && &runtimepath !~# '/dein.vim'
     let s:dein_dir = expand('~/.vim/dein')
           \. '/repos/github.com/Shougo/dein.vim'
     if !isdirectory(s:dein_dir)

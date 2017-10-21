@@ -20,4 +20,4 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#enable_completed_snippet = 1
 let g:neosnippet#expand_word_boundary = 1
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory = '~/.vim/dein/repos/github.com/honza/vim-snippets/snippets'
+let g:neosnippet#snippets_directory = '~/.vim/dein/repos/github.com/Shougo/neosnippet-snippets/snippets,~/.vim/dein/repos/github.com/honza/vim-snippets/snippets' 

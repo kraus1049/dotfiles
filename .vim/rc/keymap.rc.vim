@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " jkを普通のエディタと同じに{{{
 noremap j gj
 noremap gj j
@@ -29,9 +31,9 @@ nnoremap <C-Space> i <Esc><Right>
 "expand path
 cnoremap <c-x> <c-r>=expand('%:p:h')<CR>/
 
-nnoremap <silent> <Space>lc  :<C-u> !latexmk %<CR>
-nnoremap <silent> <Space>cf  :<C-u>ClangFormat<CR>
-nnoremap <silent> <Space>cl  :<C-u>close<CR>
+if has('terminal')
+nnoremap <silent> <Space>c :<C-u>terminal ++close bash<CR>
+endif
 
 nnoremap [changeMode] <Nop>
 nmap <Space>m [changeMode]
@@ -40,8 +42,8 @@ nnoremap [changeMode]p :<C-u>call vimrc#changeModeParenthesis()<CR>
 nnoremap [changeMode]; :<C-u>call vimrc#changeModeSemicolon()<CR>
 
 augroup MyAutoCmd
-	" autocmd VimEnter * silent! call vimrc#changeModeSemicolon()
-	" autocmd VimEnter * silent! call vimrc#changeModeHighLight()
+	autocmd VimEnter * silent! call vimrc#changeModeSemicolon()
+	autocmd VimEnter * silent! call vimrc#changeModeHighLight()
 	autocmd VimEnter * silent! call vimrc#changeModeParenthesis()
 augroup END
 

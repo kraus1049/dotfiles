@@ -27,3 +27,7 @@ call unite#custom#profile('source/outline', 'context', {
 \   'direction' : 'dynamicbottom',
 \   'vertical'  : 1
 \ })
+
+call unite#custom#profile('source/quickfix','context',{
+\   'direction' : 'botright',
+\ })

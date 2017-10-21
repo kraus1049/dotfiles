@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " タブの画面上での幅
 set tabstop=8
 
@@ -40,11 +42,6 @@ set foldmethod=marker
 
 set updatetime=10
 
-if IsWindows()
-  set iminsert=0
-  set imsearch=0
-endif
-
 if v:version >= 800
   set breakindent
 endif
@@ -52,6 +49,34 @@ endif
 " set splitbelow
 set splitright
 
+"Gvim ではうまくいくが、vimだとできない。
+if v:version >= 800 && 0
+	set iminsert=2
+	if has('xim') || has('multi_byte_ime') || has('global-ime')
+		set imcmdline
+	endif
+
+	set imactivatefunc=ImActivate
+	function! ImActivate(active)
+		if a:active
+			call system('fcitx-remote -o')
+		else
+			call system('fcitx-remote -c')
+		endif
+	endfunction
+
+	set imstatusfunc=ImStatus
+	function! ImStatus()
+		return system('fcitx-remote')[0] is# '2'
+	endfunction
+endif
+
+if IsWindows()
+  set iminsert=0
+  set imsearch=0
+endif
+
+set tags+=~/.cache/systags
 " バックアップファイルを作成する{{{ 
 if IsDaxuePC()
   set nobackup
@@ -84,7 +109,7 @@ endif
 "}}}
 
 "clipboard{{{
-if (!has('nvim') || $DISPLAY != '') && has('clipboard')
+if (!has('nvim') || $DISPLAY !=# '') && has('clipboard')
 	set clipboard&
   if has('unnamedplus')
     set clipboard=unnamedplus,autoselect
@@ -99,17 +124,17 @@ if !has('python3')
   let g:fcitx_toggle = 1
 
   function! Fcitx2en()
-    let s:fcitx_status = system("fcitx-remote")
+    let s:fcitx_status = system('fcitx-remote')
     if s:fcitx_status == 2
       let g:fcitx_toggle = 1
-      let l:a = system("fcitx-remote -c")
+      let l:a = system('fcitx-remote -c')
     endif
   endfunction
 
   function! Fcitx2jp()
-    let s:fcitx_status = system("fcitx-remote")
+    let s:fcitx_status = system('fcitx-remote')
     if s:fcitx_status != 2 && g:fcitx_toggle == 1
-      let l:a = system("fcitx-remote -o")
+      let l:a = system('fcitx-remote -o')
       let g:fcitx_toggle = 0
     endif
   endfunction

@@ -2,6 +2,8 @@
 set encoding=utf-8
 "}}}
 
+scriptencoding utf-8
+
 "makeの文字化け回避{{{
 function! QFixCnv(enc)
   if a:enc == &enc
