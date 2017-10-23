@@ -102,6 +102,10 @@ function! vimrc#changeModeParenthesis() abort "{{{
 
     inoremap " ""<LEFT>
     inoremap "<ESC> "<ESC>
+    inoremap "" ""
+
+    inoremap ' ''<LEFT>
+    inoremap '<ESC> '<ESC>
     inoremap '' ''
 
     inoremap < <><LEFT>

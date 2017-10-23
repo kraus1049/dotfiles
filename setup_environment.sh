@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if [ ! -d "~/tmp" ]; then
+	mkdir "~/tmp"
+fi
+
+#git
+if type git >/dev/null 2>&1; then
+	echo "git is already installed"
+else
+	sudo apt -y install git
+fi
+
 # tex
 if type uplatex >/dev/null 2>&1; then
 	echo "texlive is already installed"
@@ -28,3 +39,4 @@ if type stack >/dev/null 2>&1; then
 else
 	curl -sSL https://get.haskellstack.org/ | sh
 fi
+

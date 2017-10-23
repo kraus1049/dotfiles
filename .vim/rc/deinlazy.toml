@@ -598,7 +598,7 @@ on_ft = 'taskpaper'
 
 [[plugins]]
 repo = 'lilydjwg/fcitx.vim'
-if = 'has("python3")'
+if = 'has("python3") && !exists("g:WSL_linux")'
 on_i = 1
 
 [[plugins]]

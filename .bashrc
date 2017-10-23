@@ -126,3 +126,4 @@ fi
 
 # added by travis gem
 [ -f /home/toshi/.travis/travis.sh ] && source /home/toshi/.travis/travis.sh
+export DISPLAY=localhost:0.0

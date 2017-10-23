@@ -1,6 +1,10 @@
 let g:my_vimrc_test = 0
 
 if !g:my_vimrc_test
+	let s:local_vimrc_path = expand('$HOME').'/.local_vimrc'
+	if filereadable(s:local_vimrc_path)
+		execute 'source' s:local_vimrc_path
+	endif
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/rc/vimrc'
 else
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/rc/testvimrc'
