@@ -53,32 +53,47 @@ let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'
 let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?'
 
 let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
+" let g:neocomplete#force_omni_input_patterns.tex = 
+" 			\ '\v\\%('
+" 			\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+" 			\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+" 			\ . '|hyperref\s*\[[^]]*'
+" 			\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+" 			\ . '|%(include%(only)?|input)\s*\{[^}]*'
+" 			\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+" 			\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|\a*'
+" 			\ . ')'
 
 if !exists('g:neocomplete#sources#omni#functions')
 	let g:neocomplete#sources#omni#functions = {}
 endif
 
 let g:neocomplete#sources#omni#functions.python='jedi#completions'
+" let g:neocomplete#sources#omni#functions.tex='syntaxcomplete#Complete'
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-" let g:neocomplete#sources#omni#input_patterns.python =  '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-let g:neocomplete#sources#omni#input_patterns.tex =
-			\ '\v\\%('
-			\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-			\ . '|hyperref\s*\[[^]]*'
-			\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|%(include%(only)?|input)\s*\{[^}]*'
-			\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . '|\a*'
-			\ . ')'
+let g:neocomplete#sources#omni#input_patterns.python =  '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" let g:neocomplete#sources#omni#input_patterns.tex =
+" 			\ '\v\\%('
+" 			\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+" 			\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+" 			\ . '|hyperref\s*\[[^]]*'
+" 			\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+" 			\ . '|%(include%(only)?|input)\s*\{[^}]*'
+" 			\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+" 			\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+" 			\ . '|\a*'
+" 			\ . ')'
 
 if !exists('g:neocomplete#text_mode_filetypes')
   let g:neocomplete#text_mode_filetypes = {}
@@ -90,7 +105,7 @@ let g:neocomplete#text_mode_filetypes = {
         \ 'gitcommit' : 1,
         \ 'text' : 1,
         \ 'help' : 1,
-        \ 'tex' : 1,
+        \ 'tex' : 0,
         \}
 
 " augroup NeoconBufferRead

@@ -49,6 +49,10 @@ endif
 " set splitbelow
 set splitright
 
+" カーソルを中心にスクロール
+" 解除したかったら5ぐらいにする
+set scrolloff=9999
+
 "Gvim ではうまくいくが、vimだとできない。
 if v:version >= 800 && 0
 	set iminsert=2

@@ -21,7 +21,7 @@ function safe_path() {
 	local umake="$local/share/umake"
 	local scala="$umake/scala/scala-lang"
 	# local rust="$umake/rust/rust-lang"
-	local go="$umake/go/go-lang"
+	# local go="$umake/go/go-lang"
 
 	export GOPATH=$HOME/program/go/third-party:$HOME/program/go/my-project
 	export GOROOT=$go
