@@ -26,6 +26,7 @@ function safe_path() {
 	export GOPATH=$HOME/program/go/third-party:$HOME/program/go/my-project
 	export GOROOT=$go
 	export SCALA_HOME=$scala
+	export PYENV_ROOT="$HOME/.pyenv"
 	# export LD_LIBRARY_PATH=$rust/rustc/lib
 
 	#優先度高いものほど下へ
@@ -42,6 +43,7 @@ function safe_path() {
 		     /usr/local/bin
 		    "$local/bin"
 		    "$HOME/bin"
+		    "$PYENV_ROOT/bin"
 		     )
 	for p in ${path_cands[@]}
 	do
@@ -52,6 +54,10 @@ function safe_path() {
 
 	if [ -d "$HOME/.rbenv/bin" ]; then
 		eval "$(rbenv init -)"
+	fi
+
+	if [ -d "$HOME/.pyenv/bin" ]; then
+		eval "$(pyenv init -)"
 	fi
 }
 
