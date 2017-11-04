@@ -664,16 +664,19 @@ on_cmd = 'Chalice'
 repo = 'Lokaltog/vim-easymotion'
 hook_source = 'source ~/.vim/rc/plugins/vim-easymotion.rc.vim'
 on_map = {n = '<Plug>'}
+if = 0
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
 on_map = {n = '<Plug>'}
+if = 'v:version < 800'
 
 [[plugins]]
 repo = 'haya14busa/incsearch-easymotion.vim'
 depends = ['vim-easymotion','incsearch.vim']
 on_map = {n = '<Plug>'}
 on_i = 1
+if = 'v:version < 800'
 #}}}
 
 #Game{{{
