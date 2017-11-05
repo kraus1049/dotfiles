@@ -63,3 +63,23 @@ function safe_path() {
 
 safe_path
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
+
+export LC_MESSAGES=ja_JP.UTF-8
+export LC_IDENTIFICATION=ja_JP.UTF-8
+export LC_COLLATE=ja_JP.UTF-8
+export LC_MEASUREMENT=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
+export LC_TIME=ja_JP.UTF-8
+export LC_NAME=ja_JP.UTF-8
+
+export XIM=uim
+export XMODIFIERS=@im=uim
+#export UIM_CANDWIN_PROG=uim-candwin-gtk
+export UIM_CANDWIN_PROG=uim-candwin-gtk
+export GTK_IM_MODULE=uim
+export QT_IM_MODULE=uim
+
+# if [ $SHLVL -eq 1 ]; then
+# 	uim-xim &
+# fi

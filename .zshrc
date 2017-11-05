@@ -88,6 +88,10 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.profile
+
+if [ 1 -eq 1 ]; then
+	source $HOME/.local_profile
+fi
 # source $HOME/.zprofile
 source $ZSH/oh-my-zsh.sh
 
