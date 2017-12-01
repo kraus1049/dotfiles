@@ -21,6 +21,29 @@ function! IsDaxuePC() abort
   return s:is_daxue_PC
 endfunction
 
+
+" PATHの自動更新関数
+" | 指定された path が $PATH に存在せず、ディレクトリとして存在している場合
+" | のみ $PATH に加える
+function! IncludePath(path)
+  " define delimiter depends on platform
+  if IsWindows()
+    let delimiter = ";"
+  else
+    let delimiter = ":"
+  endif
+  let pathlist = split($PATH, delimiter)
+  if isdirectory(a:path) && index(pathlist, a:path) == -1
+    let $PATH=a:path.delimiter.$PATH
+  endif
+endfunction
+
+" ~/.pyenv/shims を $PATH に追加する
+" これを行わないとpythonが正しく検索されない
+call IncludePath(expand("~/.pyenv/shims"))
+
+" set pyxversion=3
+
 "s:source_rc {{{
 function! s:source_rc(path, ...) abort
   let l:use_global = get(a:000, 0, !has('vim_starting'))

@@ -71,9 +71,9 @@ function! vimrc#changeModeParenthesis() abort "{{{
     iunmap <<ESC>
     iunmap <>
 
-    iunmap <Bar><Bar>
-    iunmap <Bar><Bar><ESC>
-    iunmap <Bar><Bar>
+    " iunmap <Bar><Bar>
+    " iunmap <Bar><Bar><ESC>
+    " iunmap <Bar><Bar>
 
     iunmap `
     iunmap `<ESC>
@@ -112,9 +112,9 @@ function! vimrc#changeModeParenthesis() abort "{{{
     inoremap <<ESC> <<ESC>
     inoremap <> <>
 
-    inoremap <Bar> <Bar><Bar><LEFT>
-    inoremap <Bar><ESC> <Bar><ESC>
-    inoremap <Bar><Bar> <Bar><Bar>
+    " inoremap <Bar> <Bar><Bar><LEFT>
+    " inoremap <Bar><ESC> <Bar><ESC>
+    " inoremap <Bar><Bar> <Bar><Bar>
 
     inoremap ` ``<LEFT>
     inoremap `<ESC> `<ESC>

@@ -1,9 +1,5 @@
-"CUI環境でのポップアップメニュー{{{
-highlight Pmenu ctermbg=7*
-highlight PmenuSel ctermbg=6*
-highlight PmenuSbar ctermbg=2
-highlight PmenuThumb ctermbg=3
-"}}}
+
+set colorcolumn=80 " 80文字目にライン"
 
 
 "ビープ音を鳴らさない
@@ -102,9 +98,25 @@ augroup MyAutoCmd
   autocmd ColorScheme * highlight MatchParen ctermfg=208 ctermbg=233
 augroup END
 
+" set termguicolors
+" 256色
 set t_Co=256
-"set termguicolors
 colorscheme molokai
+
+
+
+"CUI環境でのポップアップメニュー{{{
+highlight Pmenu ctermbg=7*
+highlight PmenuSel ctermbg=6*
+highlight PmenuSbar ctermbg=2
+highlight PmenuThumb ctermbg=3
+"}}}
+
+"GUI環境でのアンダーバー {{{
+highlight CursorLine guifg=#E19972
+highlight Underlined guifg=#fa8072
+highlight Folded guifg=#a8c97f
+"}}}
 
 " vim: foldmethod=marker
 "vim: foldlevel=0

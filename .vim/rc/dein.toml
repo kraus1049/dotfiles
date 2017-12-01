@@ -7,6 +7,9 @@ rts = ''
 repo = 'tomasr/molokai'
 
 [[plugins]]
+repo = 'jacoborus/tender.vim'
+
+[[plugins]]
 repo = 'itchyny/vim-haskell-indent'
 
 # molokaiのカッコの色を変える設定が壊れる。

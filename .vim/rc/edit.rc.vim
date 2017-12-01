@@ -81,6 +81,9 @@ if IsWindows()
 endif
 
 set tags+=~/.cache/systags
+
+set shiftround " '<'や'>'でインデントする際に'shiftwidth'の倍数に丸める
+set switchbuf=usetab
 " バックアップファイルを作成する{{{ 
 if IsDaxuePC()
   set nobackup

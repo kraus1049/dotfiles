@@ -16,10 +16,10 @@ noremap <Up> <C-W>k
 noremap <Down> <C-W>j
 noremap <Left> <C-W>h
 noremap <Right> <C-W>l
-noremap <S-Up> <C-W>+
-noremap <S-Down> <C-W>-
-noremap <S-Left> <C-W><
-noremap <S-Right> <C-W>>
+noremap <S-Up> <C-W>+<CR>
+noremap <S-Down> <C-W>-<CR>
+noremap <S-Left> <C-W><<CR>
+noremap <S-Right> <C-W>><CR>
 "---------------------------------------------------------------------------------------------------------------------------}}}
 
 " カーソル位置から行末までヤンク
@@ -31,9 +31,18 @@ nnoremap <C-Space> i <Esc><Right>
 "expand path
 cnoremap <c-x> <c-r>=expand('%:p:h')<CR>/
 
+"バックスラッシュやクエスチョンマークをエスケープ
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+nnoremap q: <Nop>
+
 if has('terminal')
-nnoremap <silent> <Space>c :<C-u>terminal ++close bash<CR>
+	nnoremap <silent> <Space>c :<C-u>terminal ++close bash<CR>
 endif
+
+" w!! でスーパーユーザーとして保存（sudoが使える環境限定）
+cmap w!! w !sudo tee > /dev/null %
 
 nnoremap [changeMode] <Nop>
 nmap <Space>m [changeMode]
