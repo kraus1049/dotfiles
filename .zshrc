@@ -56,7 +56,6 @@ plugins=(cabal chruby copydir copyfile cp emoji emoji-clock gem git-extras git-f
 export LANG=ja_JP.UTF-8
 
 # export LIBGL_ALWAYS_INDIRECT=1
-export DISPLAY=localhost:0.0
 
 # export WINEPREFIX=~/.wine/win64/
 
@@ -89,7 +88,8 @@ fi
 
 source $HOME/.profile
 
-if [ 1 -eq 1 ]; then
+if [ 0 -eq 1 ]; then
+	export DISPLAY=localhost:0.0
 	source $HOME/.local_profile
 fi
 # source $HOME/.zprofile

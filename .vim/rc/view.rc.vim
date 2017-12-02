@@ -105,12 +105,12 @@ colorscheme molokai
 
 
 
-"CUI環境でのポップアップメニュー{{{
-highlight Pmenu ctermbg=7*
-highlight PmenuSel ctermbg=6*
-highlight PmenuSbar ctermbg=2
-highlight PmenuThumb ctermbg=3
-"}}}
+" "CUI環境でのポップアップメニュー{{{
+" highlight Pmenu ctermbg=7*
+" highlight PmenuSel ctermbg=6*
+" highlight PmenuSbar ctermbg=2
+" highlight PmenuThumb ctermbg=3
+" "}}}
 
 "GUI環境でのアンダーバー {{{
 highlight CursorLine guifg=#E19972
