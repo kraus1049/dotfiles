@@ -79,9 +79,9 @@ function! vimrc#changeModeParenthesis() abort "{{{
     iunmap `<ESC>
     iunmap ``
 
-		iunmap $
-		iunmap $<ESC>
-		iunmap $$
+		" iunmap $
+		" iunmap $<ESC>
+		" iunmap $$
     echo('parenthesis Off')
     let s:parenthesis = 1
   else
@@ -120,9 +120,9 @@ function! vimrc#changeModeParenthesis() abort "{{{
     inoremap `<ESC> `<ESC>
     inoremap `` ``
 
-		inoremap $ $$<LEFT>
-		inoremap $<ESC> $<ESC>
-		inoremap $$ $$
+		" inoremap $ $$<LEFT>
+		" inoremap $<ESC> $<ESC>
+		" inoremap $$ $$
     echo('parenthesis On')
     let s:parenthesis = 0
   endif
