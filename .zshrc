@@ -88,12 +88,38 @@ fi
 
 source $HOME/.profile
 
-if [ 0 -eq 1 ]; then
-	export DISPLAY=localhost:0.0
-	source $HOME/.local_profile
+# WSL の場合
+if [[ `uname -a` =~ Linux && `uname -a` =~ Microsoft ]]; then
+  export DISPLAY=localhost:0.0
+
+  export LC_MESSAGES=ja_JP.UTF-8
+  export LC_IDENTIFICATION=ja_JP.UTF-8
+  export LC_COLLATE=ja_JP.UTF-8
+  export LC_MEASUREMENT=ja_JP.UTF-8
+  export LC_CTYPE=ja_JP.UTF-8
+  export LC_TIME=ja_JP.UTF-8
+  export LC_NAME=ja_JP.UTF-8
+  
+  export XIM=uim
+  export XMODIFIERS=@im=uim
+  export UIM_CANDWIN_PROG=uim-candwin-gtk
+  export GTK_IM_MODULE=uim
+  export QT_IM_MODULE=uim
+  
+  # IM=fcitx
+  # export XMODIFIERS="@im=$IM"
+  # export GTK_IM_MODULE=$IM
+  # export QT_IM_MODULE=$IM
+  
+  # if [ $SHLVL -eq 1 ]; then
+  # 	uim-xim &
+  # fi
 fi
-# source $HOME/.zprofile
+
+
+[ -f $HOME/.local_profile ] && source $HOME/.local_profile
+
 source $ZSH/oh-my-zsh.sh
 
 # added by travis gem
-[ -f /home/toshi/.travis/travis.sh ] && source /home/toshi/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
