@@ -1,125 +1,174 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# See https://github.com/Microsoft/BashOnWindows/issues/1887
+unsetopt BG_NICE
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+: "zplug" && {
+    source ~/.zplug/init.zsh
 
-# Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+    : "プラグイン" && {
+        zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+        : "タイプ補完" && {
+            zplug "zsh-users/zsh-autosuggestions"
+            zplug "zsh-users/zsh-completions"
+            zplug "chrissicool/zsh-256color"
+        }
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+        zplug "mollifier/anyframe"
 
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
+        zplug "zsh-users/zsh-syntax-highlighting", defer:2
+        zplug "zsh-users/zsh-history-substring-search"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+        zplug "b4b4r07/enhancd", use:init.sh
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+        : "prompt" && {
+            zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+            zplug "mafredri/zsh-async"
+        }
+    }
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+    : "インストール" && {
+        if ! zplug check --verbose; then
+            printf 'Install? [y/N]: '
+            if read -q; then
+                echo; zplug install
+            fi
+        fi
+    }
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+    : "ロード" && {
+        zplug load
+    }
+}
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+: "一般的な設定" && {
+    setopt nobeep # ビープを鳴らさない
+    setopt no_tify # バックグラウンドジョブが終了したらすぐに知らせる。
+    setopt auto_menu # タブによるファイルの順番切り替え
+    setopt auto_pushd # cd -[tab]で過去のディレクトリにひとっ飛びできるようにする
+    # pushd したとき、ディレクトリがすでにスタックに含まれていればスタックに追加しない
+    setopt pushd_ignore_dups
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+    setopt auto_cd # ディレクトリ名を入力するだけでcdできるようにする
+    cdpath=(.. ~ ~/src)
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+    setopt interactive_comments # コマンドラインでも # 以降をコメントと見なす
+    setopt extended_glob # 拡張globを有効にする
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(cabal chruby copydir copyfile cp emoji emoji-clock gem git-extras git-flow git-flow-avh git-hubflow git-prompt git-remote-branch github gitignore gnu-utils go golang history histry-substring-search jruby man rbenv sudo tmux ubuntu vi-mode vim-interaction git rails ruby rake scala tmux-cssh tmux-inator vim-interaction web-search z zsh-navigation-tools zsh-reload)
+    # Ctrl+sのロック, Ctrl+qのロック解除を無効にする
+    setopt no_flow_control
 
-# User configuration
+    # 日本語ファイル名を表示可能にする
+    setopt print_eight_bit
 
-export LANG=ja_JP.UTF-8
+    # 日本語ファイル名を表示可能にする
+    setopt print_eight_bit
+    # 単語の一部として扱われる文字のセットを指定する
+    # ここではデフォルトのセットから / を抜いたものとする
+    # こうすると、 Ctrl-W でカーソル前の1単語を削除したとき、 / までで削除が止まる
+    WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-# export LIBGL_ALWAYS_INDIRECT=1
-
-# export WINEPREFIX=~/.wine/win64/
-
-export TERM=xterm-256color
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-source $HOME/.profile
-
-# WSL の場合
-if [[ `uname -a` =~ Linux && `uname -a` =~ Microsoft ]]; then
-  export DISPLAY=localhost:0.0
-
-  export LC_MESSAGES=ja_JP.UTF-8
-  export LC_IDENTIFICATION=ja_JP.UTF-8
-  export LC_COLLATE=ja_JP.UTF-8
-  export LC_MEASUREMENT=ja_JP.UTF-8
-  export LC_CTYPE=ja_JP.UTF-8
-  export LC_TIME=ja_JP.UTF-8
-  export LC_NAME=ja_JP.UTF-8
-  
-  export XIM=uim
-  export XMODIFIERS=@im=uim
-  export UIM_CANDWIN_PROG=uim-candwin-gtk
-  export GTK_IM_MODULE=uim
-  export QT_IM_MODULE=uim
-  
-  # IM=fcitx
-  # export XMODIFIERS="@im=$IM"
-  # export GTK_IM_MODULE=$IM
-  # export QT_IM_MODULE=$IM
-  
-  # if [ $SHLVL -eq 1 ]; then
-  # 	uim-xim &
-  # fi
-fi
+    # cdの後にlsを実行
+    chpwd() { ls --color=auto}
+}
 
 
-[ -f $HOME/.local_profile ] && source $HOME/.local_profile
+: "補完" && {
+    autoload -U compinit && compinit # 補完機能の強化
+    if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+    fi
 
-source $ZSH/oh-my-zsh.sh
+    setopt correct # 入力しているコマンド名が間違っている場合にもしかして：を出す。
 
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+    # 補完後、メニュー選択モードになり左右キーで移動が出来る
+    zstyle ':completion:*:default' menu select=2
+
+    # 補完で大文字にもマッチ
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+    # sudo の後ろでコマンド名を補完する
+    zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+}
+
+: "color" && {
+    autoload -Uz colors && colors
+    zstyle ':completion:*' list-colors "${LS_COLORS}"
+    export CLICOLOR=1
+}
+
+: "ヒストリ関連の設定" && {
+  HISTFILE=$HOME/.zsh_history # ヒストリファイル名
+  HISTSIZE=10000 # メモリに保存される履歴の件数
+  SAVEHIST=10000 # 履歴ファイルに保存される履歴の件数
+  setopt hist_ignore_dups # 直前と同じコマンドをヒストリに追加しない
+  setopt hist_ignore_all_dups # 重複するコマンドは古い方を削除する
+  setopt share_history # 異なるウィンドウでコマンドヒストリを共有する
+  setopt hist_no_store # historyコマンドは履歴に登録しない
+  setopt hist_reduce_blanks # 余分な空白は詰めて記録
+  setopt hist_verify # `!!`を実行したときにいきなり実行せずコマンドを見せる
+}
+
+: "cdr" && {
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+}
+
+: "peco" && {
+    function peco-select-history() {
+        # historyを番号なし、逆順、最初から表示。
+        # 順番を保持して重複を削除。
+        # カーソルの左側の文字列をクエリにしてpecoを起動
+        # \nを改行に変換
+        BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
+        CURSOR=$#BUFFER             # カーソルを文末に移動
+        zle -R -c                   # refresh
+    }
+
+    zle -N peco-select-history
+
+    function peco-buffer() {
+        BUFFER=$(eval ${BUFFER} | peco)
+        CURSOR=0
+    }
+
+    zle -N peco-buffer
+}
+
+: "キーバインディング" && {
+  : "Ctrl-Yで上のディレクトリに移動できる" && {
+    function cd-up { zle push-line && LBUFFER='builtin cd ..' && zle accept-line }
+    zle -N cd-up
+    bindkey "^Y" cd-up
+  }
+
+  : "Ctrl-[で直前コマンドの単語を挿入できる" && {
+    autoload -Uz smart-insert-last-word
+    zstyle :insert-last-word match '*([[:alpha:]/\\]?|?[[:alpha:]/\\])*' # [a-zA-Z], /, \ のうち少なくとも1文字を含む長さ2以上の単語
+    zle -N insert-last-word smart-insert-last-word
+    bindkey '^[' insert-last-word
+  }
+
+  : "履歴をpeco" && {
+    bindkey '^R' anyframe-widget-put-history
+  }
+
+  : "<M-p>でコマンドを実行してpeco" && {
+      bindkey "^[p" peco-buffer
+  }
+}
+
+
+: "エイリアス" && {
+    alias ls='ls --color=auto'
+    alias cdr=anyframe-widget-cdr
+}
+
+
+: ".profileを読む" && {
+    source $HOME/.profile
+}
+
+: ".local_profileがあれば読む" && {
+    [ -f $HOME/.local_profile ] && source $HOME/.local_profile
+}

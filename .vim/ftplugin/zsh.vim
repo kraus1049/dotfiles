@@ -25,5 +25,10 @@ let b:match_words =
       \ . ',\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
 let b:match_skip = 's:comment\|string\|heredoc\|subst'
 
+setlocal softtabstop=4
+setlocal expandtab
+setlocal tabstop=4
+setlocal shiftwidth=4
+
 let &cpo = s:cpo_save
 unlet s:cpo_save
