@@ -50,6 +50,7 @@ fi
 if type glide >/dev/null 2>&1; then
 	echo "glide is already installed"
 else
-	sudo add-apt-repository ppa:masterminds/glide
-	sudo apt update
-	sudo apt install glide
+
+sudo add-apt-repository ppa:masterminds/glide
+sudo apt update
+sudo apt install glide

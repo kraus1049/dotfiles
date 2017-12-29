@@ -53,7 +53,7 @@
 
 : "環境変数設定" && {
     export GOPATH=$HOME/src/
-    export GOROOT=/home/toshi_WSL/.local/share/umake/go/go-lang
+    export GOROOT=$HOME/.local/share/umake/go/go-lang
     export SCALA_HOME=$HOME/.local/share/umake/scala/scala-lang
     export PYENV_ROOT=$HOME/.pyenv
 }
