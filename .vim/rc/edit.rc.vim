@@ -153,5 +153,8 @@ if !has('python3')
 endif
 "}}}
 
+" tex の設定
+let g:tex_flavor = "latex"
+
 " vim: foldmethod=marker
 "vim: foldlevel=0

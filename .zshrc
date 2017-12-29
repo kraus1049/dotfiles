@@ -44,8 +44,10 @@ unsetopt BG_NICE
     setopt nobeep # ビープを鳴らさない
     setopt no_tify # バックグラウンドジョブが終了したらすぐに知らせる。
     setopt auto_menu # タブによるファイルの順番切り替え
-    setopt auto_pushd # cd -[tab]で過去のディレクトリにひとっ飛びできるようにする
-    # pushd したとき、ディレクトリがすでにスタックに含まれていればスタックに追加しない
+
+    # cd -[tab]で過去のディレクトリにひとっ飛びできるようにする
+    setopt auto_pushd 
+    # pushdしたときディレクトリがすでにスタックに含まれていれば追加しない
     setopt pushd_ignore_dups
 
     setopt auto_cd # ディレクトリ名を入力するだけでcdできるようにする
@@ -64,7 +66,7 @@ unsetopt BG_NICE
     setopt print_eight_bit
     # 単語の一部として扱われる文字のセットを指定する
     # ここではデフォルトのセットから / を抜いたものとする
-    # こうすると、 Ctrl-W でカーソル前の1単語を削除したとき、 / までで削除が止まる
+    # こうするとCtrl-W でカーソル前の1単語を削除したとき、 / までで削除が止まる
     WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
     # cdの後にlsを実行
@@ -75,10 +77,11 @@ unsetopt BG_NICE
 : "補完" && {
     autoload -U compinit && compinit # 補完機能の強化
     if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
+        fpath=(/usr/local/share/zsh-completions $fpath)
     fi
 
-    setopt correct # 入力しているコマンド名が間違っている場合にもしかして：を出す。
+    # 入力しているコマンド名が間違っている場合にもしかして：を出す。
+    setopt correct 
 
     # 補完後、メニュー選択モードになり左右キーで移動が出来る
     zstyle ':completion:*:default' menu select=2
@@ -133,6 +136,16 @@ unsetopt BG_NICE
     }
 
     zle -N peco-buffer
+
+    function peco-src () {
+    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+    }
+    zle -N peco-src
 }
 
 : "キーバインディング" && {
@@ -144,7 +157,9 @@ unsetopt BG_NICE
 
   : "Ctrl-[で直前コマンドの単語を挿入できる" && {
     autoload -Uz smart-insert-last-word
-    zstyle :insert-last-word match '*([[:alpha:]/\\]?|?[[:alpha:]/\\])*' # [a-zA-Z], /, \ のうち少なくとも1文字を含む長さ2以上の単語
+
+    # [a-zA-Z], /, \ のうち少なくとも1文字を含む長さ2以上の単語
+    zstyle :insert-last-word match '*([[:alpha:]/\\]?|?[[:alpha:]/\\])*' 
     zle -N insert-last-word smart-insert-last-word
     bindkey '^[' insert-last-word
   }
@@ -154,7 +169,11 @@ unsetopt BG_NICE
   }
 
   : "<M-p>でコマンドを実行してpeco" && {
-      bindkey "^[p" peco-buffer
+    bindkey "^[p" peco-buffer
+  }
+
+  : "ghqをpeco" && {
+    bindkey '^G' peco-src
   }
 }
 

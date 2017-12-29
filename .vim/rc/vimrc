@@ -2,6 +2,10 @@
 "   set nocompatible
 " endif
 
+if has('python3')
+
+endif
+
 filetype off
 filetype plugin indent off
 
@@ -42,7 +46,7 @@ endfunction
 " これを行わないとpythonが正しく検索されない
 call IncludePath(expand("~/.pyenv/shims"))
 
-" set pyxversion=3
+set pyxversion=0
 
 "s:source_rc {{{
 function! s:source_rc(path, ...) abort

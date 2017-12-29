@@ -1,6 +1,8 @@
 	"  wombat, solarized, powerline, jellybeans, Tomorrow, Tomorrow_Night,
 	" Tomorrow_Night_Blue, Tomorrow_Night_Eighties, PaperColor, seoul256, landscape, one, Dracula, darcula, Molokai and 16color 
 
+
+	" \ 'colorscheme': 'neodark',
 	let g:lightline = {
 	\ 'colorscheme': 'powerline',
 	\ 'mode_map': {'c': 'NORMAL'},

@@ -25,5 +25,7 @@ setlocal shiftwidth=4
 setlocal comments=s1fl:{-,mb:-,ex:-},:-- commentstring=--\ %s
 setlocal formatoptions-=t formatoptions+=cql
 
+let g:haskellmode_completion_ghc=0
+
 let &cpo = s:cpo_save
 unlet s:cpo_save

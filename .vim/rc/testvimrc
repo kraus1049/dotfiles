@@ -1,29 +1,8 @@
 set nocompatible
 
-"s:source_rc {{{
-function! s:source_rc(path, ...) abort
-  let use_global = get(a:000, 0, !has('vim_starting'))
-  let abspath = resolve(expand('~/.vim/rc/' . a:path))
-  if !use_global
-    execute 'source' fnameescape(abspath)
-    return
-  endif
+let &rtp  = '~/.vim/dein/repos/github.com/lervag/vimtex,' . &rtp
+let &rtp .= '~/.vim/dein/repos/github.com/lervag/vimtex/after,'
+filetype plugin indent on
+syntax enable
 
-  " substitute all 'set' to 'setglobal'
-  let content = map(readfile(abspath),
-        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
-  " create tempfile and source the tempfile
-  let tempfile = tempname()
-  try
-    call writefile(content, tempfile)
-    execute 'source' fnameescape(tempfile)
-  finally
-    if filereadable(tempfile)
-      call delete(tempfile)
-    endif
-  endtry
-endfunction"}}}
-
-call s:source_rc('dein.rc.vim')
-
-call dein#clear_state()
+" Vimtex options go here

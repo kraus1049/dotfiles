@@ -5,6 +5,17 @@ rts = ''
 
 [[plugins]]
 repo = 'tomasr/molokai'
+hook_add = '''
+  let g:molokai_original = 1
+  let g:rehash256 = 1
+'''
+
+[[plugins]]
+repo = 'KeitaNakamura/neodark.vim'
+hook_add = '''
+	let g:neodark#background = '#202020'
+	let g:neodark#use_256color = 1
+'''
 
 [[plugins]]
 repo = 'jacoborus/tender.vim'
@@ -20,3 +31,4 @@ repo = 'itchyny/vim-haskell-indent'
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 hook_source = 'set helplang=ja,en'
+

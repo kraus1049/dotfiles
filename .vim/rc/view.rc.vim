@@ -100,9 +100,25 @@ augroup END
 
 " set termguicolors
 " 256色
+
+if has('vim_starting')
+  " 利用可能な場合は true color を有効化する
+  if !has('gui_running')
+        \ && exists('&termguicolors')
+        \ && $COLORTERM ==# 'truecolor'
+    " tmux 等でも強制的に termguicolors を有効化するための設定 (Neovim では不要)
+    " https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
+    if !has('nvim')
+      let &t_8f = "\e[38;2;%lu;%lu;%lum"
+      let &t_8b = "\e[48;2;%lu;%lu;%lum"
+    endif
+    set termguicolors       " use truecolor in term
+  endif
+
 set t_Co=256
 colorscheme molokai
 
+endif
 
 
 " "CUI環境でのポップアップメニュー{{{

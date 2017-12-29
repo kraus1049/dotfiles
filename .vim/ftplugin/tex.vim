@@ -41,7 +41,6 @@ if exists("loaded_matchit")
 endif " exists("loaded_matchit")
 
 let g:tex_fold_enable = 1
-let g:tex_flavor = "latex"
 let g:latex_latexmk_options = '-pdfdvi'
 
 set tabstop=2

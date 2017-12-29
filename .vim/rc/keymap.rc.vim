@@ -38,7 +38,7 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 nnoremap q: <Nop>
 
 if has('terminal')
-	nnoremap <silent> <Space>c :<C-u>terminal ++close bash<CR>
+	nnoremap <silent> <Space>c :<C-u>terminal ++close zsh<CR>
 endif
 
 " w!! でスーパーユーザーとして保存（sudoが使える環境限定）

@@ -248,9 +248,9 @@ repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['context_filetype.vim','nvim-yarp','vim-hug-neovim-rpc']
-hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
-if = "has('python3') && v:version >= 800 && 0"
+depends = ['nvim-yarp','vim-hug-neovim-rpc','context_filetype.vim']
+hook_add = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
+if = "has('python3') && v:version >= 800 && 1"
 on_i = 1
 
 [[plugins]]
@@ -258,12 +258,12 @@ repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 hook_source = 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
 on_i = 1
-if = "has('lua')"
+if = "has('lua') && !has('python3')"
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['vim-snippets','neosnippet-snippets', 'context_filetype.vim']
-on_i = 1
+on_source = ['deoplete.nvim','neocomplete.vim']
 on_ft = 'snippet'
 hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
 
@@ -279,25 +279,24 @@ on_ft = 'vim'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-depends = 'neocomplete.vim'
 on_ft = ['text','tex','git','gitcommit']
 
 [[plugins]]
 repo = 'hrsh7th/vim-neco-calc'
-on_source = 'neocomplete.vim'
+on_source =['neocomplete.vim','deoplete.nvim']
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
-on_source = 'neocomplete.vim'
+on_source =['neocomplete.vim','deoplete.nvim']
 
 
 [[plugins]]
 repo = 'Shougo/neopairs.vim'
-on_source = 'neocomplete.vim'
+on_source =['neocomplete.vim','deoplete.nvim']
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
-on_source = 'neocomplete.vim'
+on_source =['neocomplete.vim','deoplete.nvim']
 
 #}}}
 
@@ -357,6 +356,7 @@ on_i = 1
 # Haskell tool {{{
 [[plugins]]
 repo = 'eagletmt/neco-ghc'
+# repo = 'mkasa/neco-ghc-lushtags'
 hook_source = 'source ~/.vim/rc/plugins/neco-ghc.rc.vim'
 on_ft = 'haskell'
 
@@ -390,6 +390,19 @@ repo = 'osyo-manga/vim-marching'
 depends = 'neocomplete.vim'
 hook_source = 'source ~/.vim/rc/plugins/vim-marching.rc.vim'
 on_ft = ['c','cpp']
+if = "!has('python3') && has('lua')"
+
+[[plugins]]
+# repo = 'zchee/deoplete-clang'
+repo = 'tweekmonster/deoplete-clang2'
+depends = ['deoplete.nvim']
+hook_source = '''
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang-3.8.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+let g:deoplete#sources#clang#executable="/usr/bin/clang"
+'''
+on_ft = ['c', 'cpp', 'cmake']
+if = "has('python3')"
 #}}}
 
 #Ruby tool {{{
@@ -417,13 +430,6 @@ on_ft = 'java'
 
 #}}}
 
-#Tex {{{
-[[plugins]]
-repo = 'lervag/vimtex'
-hook_source = 'source ~/.vim/rc/plugins/vimtex.rc.vim'
-on_ft = ['plaintex','tex']
-#}}}
-
 #Go tool{{{
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -433,6 +439,13 @@ on_ft = 'go'
 [[plugins]]
 repo = 'vim-jp/vim-go-extra'
 on_ft = 'go'
+#}}}
+
+#Tex {{{
+[[plugins]]
+repo = 'lervag/vimtex'
+hook_source = 'source ~/.vim/rc/plugins/vimtex.rc.vim'
+on_ft = ['plaintex','tex']
 #}}}
 
 #scala tool {{{
@@ -448,22 +461,28 @@ on_ft = 'elixir'
 #}}}
 
 #rust tool {{{
+
+[[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
+depends = 'deoplete.nvim'
+on_ft = 'rust'
+if = "has('python3')"
+
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 hook_source = 'source ~/.vim/rc/plugins/rust.rc.vim'
 on_ft = 'rust'
-if = 1
 
 [[plugins]]
 repo = 'racer-rust/vim-racer'
 hook_source = 'source ~/.vim/rc/plugins/vim-racer.rc.vim'
 on_ft = 'rust'
-if = 1
+if = "!has('python3') && has('lua')"
 
 [[plugins]]
 repo = 'rhysd/rust-doc.vim'
 on_ft = 'rust'
-on_source = ['unite.vim']
+on_source = ['unite.vim','denite.nvim']
 #}}}
 
 # python {{{
@@ -471,11 +490,17 @@ on_source = ['unite.vim']
 repo = 'davidhalter/jedi-vim'
 hook_source = 'source ~/.vim/rc/plugins/jedi-vim.rc.vim'
 on_ft = ['python']
+if = "!has('python3') && has('lua')"
 
 [[plugins]]
 repo = 'lambdalisue/vim-pyenv'
 depends = ['davidhalter/jedi-vim']
 on_ft = ['python']
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = ['python']
+if = "has('python3')"
 #}}}
 
 # markdown {{{

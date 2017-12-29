@@ -52,7 +52,7 @@
 }
 
 : "環境変数設定" && {
-    export GOPATH=$HOME/program/go/third-party:$HOME/program/go/my-project
+    export GOPATH=$HOME/src/
     export GOROOT=/home/toshi_WSL/.local/share/umake/go/go-lang
     export SCALA_HOME=$HOME/.local/share/umake/scala/scala-lang
     export PYENV_ROOT=$HOME/.pyenv
@@ -62,16 +62,15 @@
     # safe_path
     #優先度高いものほど↑へ
     path=(
+        $HOME/.local/bin(N-/)
         /usr/local/heroku/bin(N-/)
         $HOME/.rbenv/versions/2.3.0-dev/bin(N-/)
         $HOME/.rbenv/bin(N-/)
         $scala/bin(N-/)
         $HOME/.cargo/bin(N-/)
         $HOME/.local/share/umake/go/go-lang/bin(N-/)
-        $HOME/program/go/my-project/bin(N-/)
-        $HOME/program/go/third-party/bin(N-/)
+        $GOPATH/bin(N-/)
         /usr/local/bin(N-/)
-        $HOME/.local/bin(N-/)
         $HOME/bin(N-/)
         $PYENV_ROOT/bin(N-/)
         $path

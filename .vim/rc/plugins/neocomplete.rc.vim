@@ -40,7 +40,6 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 
-
 " Enable heavy omni completion.
 if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
@@ -73,27 +72,8 @@ if !exists('g:neocomplete#sources#omni#functions')
 endif
 
 let g:neocomplete#sources#omni#functions.python='jedi#completions'
-" let g:neocomplete#sources#omni#functions.tex='syntaxcomplete#Complete'
-
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-let g:neocomplete#sources#omni#input_patterns.python =  '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" let g:neocomplete#sources#omni#input_patterns.tex =
-" 			\ '\v\\%('
-" 			\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-" 			\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-" 			\ . '|hyperref\s*\[[^]]*'
-" 			\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-" 			\ . '|%(include%(only)?|input)\s*\{[^}]*'
-" 			\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-" 			\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-" 			\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-" 			\ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-" 			\ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-" 			\ . '|\a*'
-" 			\ . ')'
+"texの設定はvimtexで行う
+let g:neocomplete#sources#omni#functions.tex=g:vimtex#re#neocomplete
 
 if !exists('g:neocomplete#text_mode_filetypes')
   let g:neocomplete#text_mode_filetypes = {}
