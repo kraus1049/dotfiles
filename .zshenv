@@ -78,7 +78,9 @@
 }
 
 : "rustの設定" && {
-    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    if [ -x type rustc ]; then
+        export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    fi
 }
 
 : "env系列の初期化" && {
