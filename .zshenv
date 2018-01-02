@@ -53,7 +53,11 @@
 
 : "環境変数設定" && {
     export GOPATH=$HOME/src/
-    export GOROOT=$HOME/.local/share/umake/go/go-lang
+    if [[ `uname -a` =~ Linux && `uname -a` =~ ARCH ]]; then
+        export GOROOT=usr/lib/go
+    else
+        export GOROOT=$HOME/.local/share/umake/go/go-lang
+    fi
     export SCALA_HOME=$HOME/.local/share/umake/scala/scala-lang
     export PYENV_ROOT=$HOME/.pyenv
 }
@@ -78,7 +82,7 @@
 }
 
 : "rustの設定" && {
-    if [ -x type rustc ]; then
+    if [ -x "`which rustc`" ]; then
         export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
     fi
 }
