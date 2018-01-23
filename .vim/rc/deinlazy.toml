@@ -222,9 +222,19 @@ hook_source = 'source ~/.vim/rc/plugins/tagbar.rc.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-on_cmd = ['Gw', 'Gblame', 'Gbrowse', 'Gcommit', 'Gdiff', 'Gedit']
+on_cmd = ['Gw', 'Gblame', 'Gbrowse', 'Gcommit', 'Gdiff', 'Gedit','Git','']
 on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
 on_map = {n = '<Plug>'}
+hook_add = '''
+  noremap [fugitive] <Nop>
+	nmap <Space>g [fugitive]
+	nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
+	nnoremap <silent> [fugitive]a :Gwrite<CR>
+	nnoremap <silent> [fugitive]c :Gcommit-v<CR>
+	nnoremap <silent> [fugitive]b :Gblame<CR>
+	nnoremap <silent> [fugitive]d :Gdiff<CR>
+	nnoremap <silent> [fugitive]m :Gmerge<CR>
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -477,7 +487,7 @@ on_ft = 'rust'
 repo = 'racer-rust/vim-racer'
 hook_source = 'source ~/.vim/rc/plugins/vim-racer.rc.vim'
 on_ft = 'rust'
-if = "!has('python3') && has('lua')"
+if = "has('python3') || has('lua')"
 
 [[plugins]]
 repo = 'rhysd/rust-doc.vim'
@@ -519,7 +529,13 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
-on_ft = ['c', 'cpp', 'vim','python', 'ruby', 'haskell', 'java','tex','go']
+on_ft = ['c', 'cpp', 'vim','python', 'ruby',
+    'haskell', 'java','tex','go','gnuplot']
+hook_add = '''
+	let g:sonictemplate_vim_template_dir = [
+				\ '~/.vim/template'
+				\]
+'''
 
 [[plugins]]
 repo = 'kien/ctrlp.vim'
@@ -585,7 +601,11 @@ on_map = {n = '<plug>'}
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
-on_map = {n = '<Plug>'}
+on_map = {n = '<Plug>',x = '<Plug>'}
+on_i = 1
+hook_add = '''
+  xmap <CR> <Plug>(EasyAlign)
+'''
 
 [[plugins]]
 repo = 'rhysd/committia.vim'
@@ -731,6 +751,10 @@ let g:table_mode_corner='|'
 let g:table_mode_align_char = ':'
 '''
 on_i = 1
+
+[[plugins]]
+repo = "gko/vim-coloresque"
+on_ft = ['vim','css','html']
 
 #easymotion{{{
 [[plugins]]

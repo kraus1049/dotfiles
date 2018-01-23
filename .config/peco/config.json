@@ -1,0 +1,7 @@
+{
+	"keymap": {
+		"M-Space": "peco.ToggleSelectionAndSelectNext",
+		"M-n": "peco.SelectDown",
+		"M-p": "peco.SelectUp"
+	}
+}

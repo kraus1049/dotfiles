@@ -120,6 +120,7 @@ colorscheme molokai
 
 endif
 
+set guiheadroom=0
 
 " "CUI環境でのポップアップメニュー{{{
 " highlight Pmenu ctermbg=7*

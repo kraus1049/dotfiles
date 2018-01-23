@@ -146,6 +146,20 @@ unsetopt BG_NICE
     zle clear-screen
     }
     zle -N peco-src
+
+    function peco-file() {
+        if git rev-parse 2> /dev/null; then
+            source_files=$(git ls-files)
+        else
+            source_files=$(find . -type f)
+        fi
+        selected_files=$(echo $source_files | peco --prompt "[find file]")
+
+        BUFFER="${BUFFER} $(echo $selected_files | tr '\n' ' ')"
+        CURSOR=$#BUFFER
+        zle redisplay
+    }
+    zle -N peco-file
 }
 
 : "キーバインディング" && {
@@ -175,12 +189,21 @@ unsetopt BG_NICE
   : "ghqをpeco" && {
     bindkey '^G' peco-src
   }
+
+  : "Ctrl-fでfileを再帰的にpeco" && {
+    bindkey '^F' peco-file
+  }
+
+  # : "Ctrl-qでfind" && {
+  #   bindkey '^q' peco-find-file
+  # }
 }
 
 
 : "エイリアス" && {
     alias ls='ls --color=auto'
     alias cdr=anyframe-widget-cdr
+    alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
 }
 
 
@@ -190,4 +213,8 @@ unsetopt BG_NICE
 
 : ".local_profileがあれば読む" && {
     [ -f $HOME/.local_profile ] && source $HOME/.local_profile
+}
+
+: "enhancdの設定" && {
+    export ENHANCD_DOT_SHOW_FULLPATH=1
 }

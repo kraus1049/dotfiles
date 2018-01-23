@@ -48,6 +48,12 @@ set softtabstop=2
 set shiftwidth=2
 let g:tex_conceal=''
 
+augroup Mytex
+  autocmd BufRead,BufNewFile *.tex set filetype=tex
+  let md_to_latex  = "pandoc --from=markdown --to=latex"
+  autocmd Filetype tex let &formatprg=md_to_latex
+augroup END
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
 

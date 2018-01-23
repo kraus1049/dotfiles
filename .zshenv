@@ -60,6 +60,7 @@
     fi
     export SCALA_HOME=$HOME/.local/share/umake/scala/scala-lang
     export PYENV_ROOT=$HOME/.pyenv
+    export XDG_CONFIG_HOME=$HOME/.config
 }
 
 : "pathを設定" && {
