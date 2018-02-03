@@ -530,7 +530,7 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
 on_ft = ['c', 'cpp', 'vim','python', 'ruby',
-    'haskell', 'java','tex','go','gnuplot']
+    'haskell', 'java','tex','go','gnuplot','markdown']
 hook_add = '''
 	let g:sonictemplate_vim_template_dir = [
 				\ '~/.vim/template'

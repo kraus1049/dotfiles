@@ -160,6 +160,26 @@ unsetopt BG_NICE
         zle redisplay
     }
     zle -N peco-file
+
+    function peco-folder() {
+        selected_dirs=$(find -L ./ -type d)
+        selected_dirs=$(echo $source_dirs | peco --prompt "[find directory]")
+
+        BUFFER="${BUFFER} $(echo $selected_dirs | tr '\n' ' ')"
+        CURSOR=$#BUFFER
+        zle redisplay
+    }
+    zle -N peco-folder
+
+    function peco-git-changed() {
+        git status --short | peco | awk '{print $2}'
+    }
+    zle -N peco-git-changed
+
+    function peco-git-hash() {
+        git log --oneline --branches | peco | awk '{print $1}'
+    }
+    zle -N peco-git-changed
 }
 
 : "キーバインディング" && {
@@ -194,6 +214,10 @@ unsetopt BG_NICE
     bindkey '^F' peco-file
   }
 
+  : "<M-D>でdirectoryを再帰的にpeco" && {
+    bindkey '^[d' peco-folder
+  }
+
   # : "Ctrl-qでfind" && {
   #   bindkey '^q' peco-find-file
   # }
@@ -204,6 +228,9 @@ unsetopt BG_NICE
     alias ls='ls --color=auto'
     alias cdr=anyframe-widget-cdr
     alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
+    alias -g H='$(peco-git-hash)'
+    alias -g F='$(peco-git-changed)'
+    # alias -g D='$(peco-directory)'
 }
 
 

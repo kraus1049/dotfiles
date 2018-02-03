@@ -21,7 +21,7 @@ use_y2axis = 0
 sleep_time = 0
 
 # 0 : 判例なし, 1 : 判例あり
-use_key = 0
+use_key = 1
 # }}}
 
 
@@ -62,13 +62,13 @@ set size ratio 0.618047
 
 # 判例 =============================={{{
 if(use_key){
-	unset key
+	set key right top
 }else{
 	# left or right
 	# top or center or bottom
 	# reverse
 
-	set key right top
+	unset key
 }
 # ===================================}}}
 

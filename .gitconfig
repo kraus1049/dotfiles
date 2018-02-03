@@ -3,3 +3,5 @@
 	name = kraus1049
 [ghq]
 	root = ~/src/src/
+[core]
+	whitespace = cr-at-eol
