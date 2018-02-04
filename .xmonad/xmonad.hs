@@ -54,7 +54,7 @@ myFocusedBorderColor = "#ff0000"
 myNormalBorderColor  = "#000000"
 -- }}}
 
-myModMask = mod3Mask -- mod4Mask
+myModMask = mod3Mask
 
 myTerminal = "$HOME/.local/bin/run_urxvt"
 
@@ -77,18 +77,37 @@ wsPP = xmobarPP { ppOrder           = \(ws:l:t:_)  -> [ws,t]
                 , ppSep             = "  "
                 }
 
+gapwidth = 0
+gwU = 0
+gwD = 0
+gwL = 0
+gwR = 0
+myLayout = spacing gapwidth $ gaps [(U, gwU),(D, gwD),(L, gwL),(R, gwR)]
+           $ (ResizableTall 1 (1/201) (116/201) [])
+             ||| (TwoPane (1/201) (116/201))
+             ||| Simplest
+
 main :: IO ()
 main = do
     wsbar <- spawnPipe myWsBar
     xmonad $ ewmh def {
-     modMask  = myModMask
-    ,terminal = myTerminal
-    ,borderWidth = 3
+     modMask            = myModMask
+    ,terminal           = myTerminal
+    ,borderWidth        = 3
     ,focusedBorderColor = myFocusedBorderColor
-    ,normalBorderColor = myNormalBorderColor
-    ,startupHook = myStartupHook
-    ,logHook = myLogHook wsbar
+    ,focusFollowsMouse  = True
+    ,normalBorderColor  = myNormalBorderColor
+    ,startupHook        = myStartupHook
+    ,logHook            = myLogHook wsbar
                 >> updatePointer (1,1) (0,0)
+    , layoutHook        = avoidStruts $ ( toggleLayouts (noBorders Full)
+                $ onWorkspace "3" simplestFloat
+                $ onWorkspace "5" (
+                    spacing 14
+                    $ gaps [(U, 2),(D, 2),(L, 5),(R, 5)]
+                    $ ResizableTall 0 (1/42) (1/2) [])
+                $ myLayout
+                )
 }
 
 

@@ -1,8 +1,8 @@
-Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
-        , borderColor = "black"
+Config { font = "xft:Migu 1M:size=13"
+        , borderColor = "#4e4e4e"
         , border = TopB
-        , bgColor = "black"
-        , fgColor = "grey"
+        , bgColor = "#1c1c1c"
+        , fgColor = "#404040"
         , position = TopW L 100
         , commands = [ Run Weather "CYVR" ["-t","<tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
                         , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
@@ -18,3 +18,57 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
         , alignSep = "}{"
         , template = "%StdinReader% | %cpu% | %memory% * %swap% | %eth0% - %eth1% }{<fc=#ee9a00>%date%</fc> | %uname% | %CYVR% "
         }
+
+
+
+-- Config { font = "xft:Migu 1M:size=13"
+--        , bgColor = "#1c1c1c"
+--        , fgColor = "#404040"
+--        , position = TopSize C 100 33
+--        -- , position = Static { xpos = 37 , ypos = 0, width = 1845, height = 18 }
+--        , lowerOnStart = False
+--        , overrideRedirect = False
+--        , border = BottomBM 0
+--        , borderColor = "#4e4e4e"
+--        , commands = [ Run Network "eth0" [ "-t"        , "⇩<rx>  ⇧<tx>  "
+--                                           , "--Low"    , "40"
+--                                           , "--High"   , "200"
+--                                           , "-m"       , "4"
+--                                           , "--normal" , "#b0bdbd"
+--                                           , "--high"   , "#a5d6a7"
+--                                           ] 10
+--                     , Run MultiCpu        [ "-t"       , "■ <total0>.<total1>.<total2>.<total3>.<total4>.<total5>.<total6>.<total7>  "
+--                                           , "--Low"    , "40"
+--                                           , "--High"   , "85"
+--                                           , "-m"       , "2"
+--                                           , "--normal" , "#b0bdbd"
+--                                           , "--high"   , "#ef9a9a"
+--                                           ] 10
+
+--                     , Run Memory          [ "-t"       , "□ <usedratio>%  "
+--                                           , "--Low"    , "40"
+--                                           , "--High"   , "90"
+--                                           , "-m"       , "2"
+--                                           , "--normal" , "#b0bdbd"
+--                                           , "--high"   , "#ef9a9a"
+--                                           ] 10
+--                     , Run BatteryP        ["CMB1"]
+--                                           [ "-t"       , "⌇ <acstatus>  "
+--                                           , "--Low"    , "20"
+--                                           , "--High"   , "80"
+--                                           , "--low"    , "#ef9a9a"
+--                                           , "--normal" , "#b0bdbd"
+--                                           , "--"
+--                                                 , "-o" , "<left>% (<timeleft>)"
+--                                                 , "-O" , "Charging <left>%"
+--                                                 , "-i" , "<left>%"
+--                                           ] 50
+--                     , Run Date "%a %m/%d %H:%M" "date" 10
+--                     , Run StdinReader
+--                     ]
+--        , sepChar = "%"
+--        , alignSep = "}{"
+--        , template = " %StdinReader% }{ %multicpu%%memory%%eth0%%battery%<fc=#ece391>%date%</fc> "
+--        }
+
+-- vim: ft=haskell
