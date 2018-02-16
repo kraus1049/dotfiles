@@ -35,9 +35,17 @@ hook_add = '''
 		nnoremap [Denite]h :<C-u>Denite help <CR>
 		nnoremap [Denite]l :<C-u>Denite line <CR>
 		nnoremap [Denite]q :<C-u>Denite quickfix <CR>
-		nnoremap [Denite]g :<C-u>Denite grep -no-empty <CR>
 		nnoremap [Denite]d :<C-u>Denite directory_rec <CR>
-	endif
+
+		nnoremap <silent> [Denite]g  :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+
+		" Denite grep検索結果を再表示する
+		nnoremap <silent> [Denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
+		" resumeした検索結果の次の行の結果へ飛ぶ
+		nnoremap <silent> [Denite]n :<C-u>Denite -resume -buffer-name=search-buffer-denite -select=+1 -immediately<CR>
+		" resumeした検索結果の前の行の結果へ飛ぶ
+		nnoremap <silent> [Denite]p :<C-u>Denite -resume -buffer-name=search-buffer-denite -select=-1 -immediately<CR>
+			endif
 '''
 if = 'v:version >= 800 && has("python3")'
 
