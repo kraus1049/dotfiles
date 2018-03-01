@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-$platex = 1;
+$platex = 0;
 $uplatex = !$platex;
 if ($platex == 1) {
 	$latex = 'platex -kanji=utf-8 -synctex=1 -halt-on-error -interaction=nonstopmode %S';

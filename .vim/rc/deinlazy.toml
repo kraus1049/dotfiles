@@ -504,19 +504,20 @@ on_source = ['unite.vim','denite.nvim']
 #}}}
 
 # python {{{
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-hook_source = 'source ~/.vim/rc/plugins/jedi-vim.rc.vim'
-on_ft = ['python']
-if = "!has('python3') && has('lua')"
+# [[plugins]]
+# repo = 'davidhalter/jedi-vim'
+# hook_source = 'source ~/.vim/rc/plugins/jedi-vim.rc.vim'
+# on_ft = ['python']
+# if = "!has('python3') && has('lua')"
 
 [[plugins]]
 repo = 'lambdalisue/vim-pyenv'
-depends = ['davidhalter/jedi-vim']
+# depends = ['davidhalter/jedi-vim']
 on_ft = ['python']
 
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
 on_ft = ['python']
 if = "has('python3')"
 #}}}
