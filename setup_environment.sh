@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sudo apt install zsh
+sudo apt install umake
+
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+
 if [ ! -d "~/tmp" ]; then
 	mkdir "~/tmp"
 fi
@@ -44,7 +49,7 @@ fi
 if type go >/dev/null 2>&1; then
 	echo "golang is already installed"
 else
-	sudo apt -y install golang
+	umake go
 fi
 
 if type glide >/dev/null 2>&1; then
@@ -54,3 +59,5 @@ else
 sudo add-apt-repository ppa:masterminds/glide
 sudo apt update
 sudo apt install glide
+
+go get github.com/motemen/ghq
