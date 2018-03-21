@@ -1,9 +1,12 @@
 #!/bin/bash
 
-sudo apt install zsh
-sudo apt install umake
+sudo apt -y install git curl zsh umake
 
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+
+if [ ! -d "~/.pyenv" ]; then
+	git clone https://github.com/pyenv.git ~/.pyenv
+fi
 
 if [ ! -d "~/tmp" ]; then
 	mkdir "~/tmp"

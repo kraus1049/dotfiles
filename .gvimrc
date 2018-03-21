@@ -1,5 +1,5 @@
-set guifont=\Ricty\ 13
-set guifontwide=\Ricty\ 13
+set guifont=\Ricty\ 10
+set guifontwide=\Ricty\ 10
 
 "set vb t_vb=
 "colorscheme molokai
