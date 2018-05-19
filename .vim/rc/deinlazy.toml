@@ -297,7 +297,7 @@ on_ft = 'vim'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-on_ft = ['text','tex','git','gitcommit']
+on_ft = ['text','tex','git','gitcommit','markdown']
 
 [[plugins]]
 repo = 'hrsh7th/vim-neco-calc'

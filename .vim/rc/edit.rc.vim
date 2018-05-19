@@ -156,5 +156,6 @@ endif
 " tex の設定
 let g:tex_flavor = "latex"
 
+set spelllang=en,cjk
 " vim: foldmethod=marker
 "vim: foldlevel=0

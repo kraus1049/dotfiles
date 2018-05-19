@@ -85,6 +85,10 @@
 : "rustの設定" && {
     if [ -x "`which rustc`" ]; then
         export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+        fpath=(
+            $HOME/.zfunc
+            $fpath
+        )
     fi
 }
 
