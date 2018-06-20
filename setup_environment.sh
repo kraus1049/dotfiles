@@ -1,15 +1,21 @@
-#!/bin/bash
+#!/bin/zsh
 
-sudo apt -y install git curl zsh umake
+set -eu
 
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+LANG=C xdg-user-dirs-gtk-update
 
-if [ ! -d "~/.pyenv" ]; then
-	git clone https://github.com/pyenv.git ~/.pyenv
+sudo apt -y install git curl zsh ubuntu-make
+
+if [ ! -d "$HOME/.zplug/" ]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
-if [ ! -d "~/tmp" ]; then
-	mkdir "~/tmp"
+if [ ! -d "$HOME/.pyenv/" ]; then
+	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+fi
+
+if [ ! -d "$HOME/tmp/" ]; then
+	mkdir "$HOME/tmp"
 fi
 
 #git
@@ -55,12 +61,23 @@ else
 	umake go
 fi
 
-if type glide >/dev/null 2>&1; then
-	echo "glide is already installed"
-else
+# if type glide >/dev/null 2>&1; then
+# 	echo "glide is already installed"
+# else
+#     sudo add-apt-repository ppa:masterminds/glide
+#     sudo apt update
+#     sudo apt install glide
+# fi
 
-sudo add-apt-repository ppa:masterminds/glide
-sudo apt update
-sudo apt install glide
-
+sudo ldconfig
 go get github.com/motemen/ghq
+
+#peco
+peco_ver=$(curl https://api.github.com/repos/peco/peco/releases/latest | grep 'tag_name' | sed -E 's/.*"([^"]+)".*/\1/')
+
+cd "$HOME/.local/bin"
+curl -OL "https://github.com/peco/peco/releases/download/${peco_ver}/peco_linux_amd64.tar.gz"
+tar -xvf *.tar.*
+mv ./peco_linux_amd64/peco ./
+rm -rf ./peco_linux_amd64*
+sudo ldconfig
