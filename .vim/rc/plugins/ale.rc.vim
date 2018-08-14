@@ -10,7 +10,8 @@ let g:ale_sign_column_always = 1
 let g:ale_completion_enabled=1
 
 let g:ale_linters = {
-			\ 'rust' : ['cargo','rustc']
+			\ 'rust' : ['cargo','rustc'],
+			\ 'tex' : ['chktex'],
 			\}
 
 let g:ale_fixers = {

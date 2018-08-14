@@ -20,6 +20,8 @@ unsetopt BG_NICE
 
         zplug "b4b4r07/enhancd", use:init.sh
 
+        zplug "momo-lab/zsh-abbrev-alias"
+
         : "prompt" && {
             zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
             zplug "mafredri/zsh-async"
@@ -51,7 +53,12 @@ unsetopt BG_NICE
     setopt pushd_ignore_dups
 
     setopt auto_cd # ディレクトリ名を入力するだけでcdできるようにする
-    cdpath=(.. ~ ~/src)
+    cdpath=(
+        ..
+        $HOME(N-/)
+        $HOME/src(N-/)
+        $cdpath
+        )
 
     setopt interactive_comments # コマンドラインでも # 以降をコメントと見なす
     setopt extended_glob # 拡張globを有効にする
@@ -69,8 +76,16 @@ unsetopt BG_NICE
     # こうするとCtrl-W でカーソル前の1単語を削除したとき、 / までで削除が止まる
     WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-    # cdの後にlsを実行
-    chpwd() { ls --color=auto}
+    # # cdの後にlsを実行
+    # chpwd() { ls --color=auto}
+
+    : "cd先のディレクトリのファイル一覧を表示する" && {
+    [ -z "$ENHANCD_ROOT" ] && function chpwd { ls -BL } # enhancdがない場合
+    [ -z "$ENHANCD_ROOT" ] || export ENHANCD_HOOK_AFTER_CD="ls -BL" # enhancdがあるときはそのHook機構を使う
+    }
+
+    # matchしなかったとき中断しない
+    setopt no_no_match
 }
 
 
@@ -83,15 +98,49 @@ unsetopt BG_NICE
     # 入力しているコマンド名が間違っている場合にもしかして：を出す。
     setopt correct 
 
+    ### 補完方法毎にグループ化する。
+    zstyle ':completion:*' format '%B%F{blue}%d%f%b'
+    zstyle ':completion:*' group-name ''
+
+    ### 補完候補に色を付ける。
+    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+    zstyle ':completion:*' keep-prefix
+    zstyle ':completion:*' recent-dirs-insert both
+
     # 補完後、メニュー選択モードになり左右キーで移動が出来る
     zstyle ':completion:*:default' menu select=2
 
-    # 補完で大文字にもマッチ
-    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+    ### 補完候補がなければより曖昧に候補を探す。
+    ### m:{a-z}={A-Z}: 小文字を大文字に変えたものでも補完する。
+    ### r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完する。
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
+
+    ### 補完候補
+    ### _oldlist 前回の補完結果を再利用する。
+    ### _complete: 補完する。
+    ### _match: globを展開しないで候補の一覧から補完する。
+    ### _history: ヒストリのコマンドも補完候補とする。
+    ### _ignored: 補完候補にださないと指定したものも補完候補とする。
+    ### _approximate: 似ている補完候補も補完候補とする。
+    ### _prefix: カーソル以降を無視してカーソル位置までで補完する。
+    zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
+
+    ## 補完候補をキャッシュする。
+    zstyle ':completion:*' use-cache yes
+    zstyle ':completion:*' cache-path ~/.zsh/cache
 
     # sudo の後ろでコマンド名を補完する
     zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+    : "sshコマンド補完を~/.ssh/configから行う" && {
+    function _ssh { compadd `fgrep 'Host ' ~/.ssh/config.* | grep -v '*' |  awk '{print $2}' | sort` }
+
+    setopt magic_equal_subst  # コマンドライン引数の --prefix=/usr とか=以降でも補完
+    setopt complete_in_word  # カーソル位置で補完する。
+    setopt auto_list  # 補完候補が複数ある時に、一覧表示
+}
 }
 
 : "color" && {
@@ -231,8 +280,38 @@ unsetopt BG_NICE
     alias -g H='$(peco-git-hash)'
     alias -g F='$(peco-git-changed)'
     # alias -g D='$(peco-directory)'
+    alias -g Djupyterlab='docker-compose -f $HOME/src/containers/jupyterlab/docker-compose.yml up --build'
+    alias docker-gc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc spotify/docker-gc'
 }
 
+: "略語展開(iab)" && {
+  abbrev-alias tree="tree -NC" # N: 文字化け対策, C:色をつける
+  abbrev-alias gpl="git pull"
+  abbrev-alias gps="git push"
+  abbrev-alias gco="git commit -av"
+  abbrev-alias ga="git add -A"
+  abbrev-alias gs="git status -s"
+  abbrev-alias dp="docker ps"
+  abbrev-alias di="docker images"
+  abbrev-alias edi="eval \$(dinghy env)"
+  abbrev-alias -g a1="awk '{print \$1}'"
+  abbrev-alias -g a2="awk '{print \$2}'"
+  abbrev-alias -g a3="awk '{print \$3}'"
+  abbrev-alias -g a4="awk '{print \$4}'"
+  abbrev-alias -g a5="awk '{print \$5}'"
+  abbrev-alias -g a6="awk '{print \$6}'"
+  abbrev-alias -g a7="awk '{print \$7}'"
+  abbrev-alias -g a8="awk '{print \$8}'"
+  abbrev-alias -g a9="awk '{print \$9}'"
+  abbrev-alias -g a10="awk '{print \$10}'"
+  abbrev-alias -g a11="awk '{print \$11}'"
+  abbrev-alias -g a12="awk '{print \$12}'"
+  abbrev-alias -g a13="awk '{print \$13}'"
+  abbrev-alias -g a14="awk '{print \$14}'"
+  abbrev-alias -g a15="awk '{print \$15}'"
+  abbrev-alias -g a16="awk '{print \$16}'"
+  abbrev-alias -g and="|" # パイプが遠いのでandを割り当てる。例えば`tail -f ./log | grep error`を`tail -f ./log and grep error`と書くことができる
+}
 
 : ".profileを読む" && {
     source $HOME/.profile
@@ -243,5 +322,5 @@ unsetopt BG_NICE
 }
 
 : "enhancdの設定" && {
-    export ENHANCD_DOT_SHOW_FULLPATH=1
+    export ENHANCD_DOT_SHOW_FULLPATH=0
 }

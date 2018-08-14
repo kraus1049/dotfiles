@@ -32,3 +32,6 @@ repo = 'itchyny/vim-haskell-indent'
 repo = 'vim-jp/vimdoc-ja'
 hook_source = 'set helplang=ja,en'
 
+[[plugins]]
+repo = 'yuttie/comfortable-motion.vim'
+if = '0'

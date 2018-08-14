@@ -56,12 +56,13 @@ myNormalBorderColor  = "#000000"
 
 myModMask = mod3Mask
 
-myTerminal = "$HOME/.local/bin/run_urxvt"
+myTerminal = "$HOME/.local/bin/alacritty"
 
 myWsBar = "xmobar $HOME/.xmonad/xmobarrc"
 
 myStartupHook = do
     spawnOnce "nitrogen --restore"
+    spawnOnce myTerminal
 
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 

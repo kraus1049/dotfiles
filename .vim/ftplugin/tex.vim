@@ -49,10 +49,12 @@ set shiftwidth=2
 let g:tex_conceal=''
 
 augroup Mytex
-  autocmd BufRead,BufNewFile *.tex set filetype=tex
+  autocmd BufRead,BufNewFile *.(tex|cls|sty) set filetype=tex
   let md_to_latex  = "pandoc --from=markdown --to=latex"
   autocmd Filetype tex let &formatprg=md_to_latex
 augroup END
+
+syntax sync minlines=50 maxlines=350
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

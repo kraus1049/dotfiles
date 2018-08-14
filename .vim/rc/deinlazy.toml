@@ -19,9 +19,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-#unite に依存することにすればsourceが全部読み込めるのでは
 repo = 'Shougo/denite.nvim'
-depends = ['neomru.vim','neoyank.vim','unite.vim','cpsm']
+depends = ['neomru.vim','neoyank.vim','cpsm']
 hook_source = 'source ~/.vim/rc/plugins/denite.vim'
 hook_add = '''
 	if v:version >= 800 && has('python3')
@@ -65,11 +64,11 @@ on_event = 'TextYankPost'
 
 [[plugins]]
 repo = 'Shougo/unite-build'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'eagletmt/unite-haddock'
@@ -77,107 +76,107 @@ on_ft = 'haskell'
 
 [[plugins]]
 repo = 'Shougo/unite-help'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'tsukkee/unite-tag'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'ujihisa/unite-font'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'tacroe/unite-mark'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickfix'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'ujihisa/quicklearn'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 depends = ['vim-quickrun']
 
 [[plugins]]
 repo = 'osyo-manga/unite-fold'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'osyo-manga/unite-filetype'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickrun_config'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 depends = ['vim-quickrun']
 
 [[plugins]]
 repo = 'lambdalisue/unite-linephrase'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/unite-session'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'
-depends = ['unite.vim','vimfiler.vim','vimshell.vim']
+depends = ['unite.vim','vimfiler.vim','vimshell.vim','denite.nvim']
 
 [[plugins]]
 repo = 'daisuzu/unite-notmuch'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'mattn/unite-advent_calendar'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'supermomonga/unite-sudden-death'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'LeafCage/unite-gvimrgb'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'kmnk/vim-unite-giti'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'zhaocai/unite-scriptnames'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'ujihisa/unite-locate'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/neossh.vim'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'ujihisa/unite-haskellimport'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 on_ft = 'haskell'
 
 [[plugins]]
 repo = 'rhysd/unite-ruby-require.vim'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 on_ft = 'ruby'
 
 [[plugins]]
 repo = 'osyo-manga/unite-highlight'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 
 [[plugins]]
 repo = 'mattn/startmenu-vim'
-on_source = 'unite.vim'
+on_source = ['unite.vim','denite.nvim']
 # }}}
 
 # lightline {{{
@@ -598,7 +597,7 @@ on_cmd = 'Ideone'
 repo = 'Shougo/vinarise.vim'
 on_cmd = 'Vinarise'
 hook_source = 'source ~/.vim/rc/plugins/vinarise.rc.vim'
-on_source = ['unite.vim','vimfiler.vim']
+on_source = ['unite.vim','vimfiler.vim','denite.nvim']
 hook_add = 'let g:vinarise_enable_auto_detect = 1'
 
 [[plugins]]
@@ -668,6 +667,7 @@ if = 0
 
 [[plugins]]
 repo = 'Shougo/neobundle.vim'
+if = '0'
 
 #TweetVim{{{
 [[plugins]]

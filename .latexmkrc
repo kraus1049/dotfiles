@@ -26,7 +26,7 @@ if ($platex == 1) {
 	$latex_silent = 'uplatex -synctex=1 -halt-on-error -interaction=batchmode';
 	$bibtex = 'upbibtex';
 	$biber  = 'biber --bblencoding=utf8 -u -U --output_safechars';
-	$dvipdf = 'dvipdfmx %O -o %D %S';
+	$dvipdf = 'dvipdfmx %O -I 24 -o %D %S';
 	$makeindex        = 'upmendex %O -o %D %S';
 	$pdf_mode = 3; # use dvipdf
 	$pdf_update_method = 2;

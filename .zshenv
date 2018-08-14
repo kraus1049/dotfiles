@@ -78,6 +78,7 @@
         /usr/local/bin(N-/)
         $HOME/bin(N-/)
         $PYENV_ROOT/bin(N-/)
+        $HOME/.local/share/tor-browser_ja/Browser/(N-/)
         $path
     )
 }
@@ -108,4 +109,8 @@
 
 : "xmodmapの設定" && {
     xmodmap $HOME/.Xmodmap
+}
+
+: "nodeの設定" && {
+    export NODE_PATH=$(npm root -g)
 }
