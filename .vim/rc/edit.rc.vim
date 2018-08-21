@@ -17,6 +17,9 @@ set showmatch
 
 set matchtime=1
 
+" 全角括弧関連
+set matchpairs+=「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”
+
 set wildmenu
 
 set notimeout ttimeout ttimeoutlen=80

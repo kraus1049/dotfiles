@@ -11,27 +11,5 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'KeitaNakamura/neodark.vim'
-hook_add = '''
-	let g:neodark#background = '#202020'
-	let g:neodark#use_256color = 1
-'''
-
-[[plugins]]
-repo = 'jacoborus/tender.vim'
-
-[[plugins]]
-repo = 'itchyny/vim-haskell-indent'
-
-# molokaiのカッコの色を変える設定が壊れる。
-# [[plugins]]
-# repo = 'nathanaelkane/vim-indent-guides'
-# hook_source = 'source ~/.vim/rc/plugins/vim-indent-guides.rc.vim'
-
-[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 hook_source = 'set helplang=ja,en'
-
-[[plugins]]
-repo = 'yuttie/comfortable-motion.vim'
-if = '0'

@@ -290,7 +290,7 @@ unsetopt BG_NICE
   abbrev-alias gps="git push"
   abbrev-alias gco="git commit -av"
   abbrev-alias ga="git add -A"
-  abbrev-alias gs="git status -s"
+  #abbrev-alias gs="git status -s"
   abbrev-alias dp="docker ps"
   abbrev-alias di="docker images"
   abbrev-alias edi="eval \$(dinghy env)"

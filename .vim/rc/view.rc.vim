@@ -27,6 +27,11 @@ set showcmd
 
 set title
 
+" terminal 表示を高速化
+set ttyfast
+
+set signcolumn=yes
+
 "Windowsでディレクトリパスの区切り文字表示に / を使えるようにする
 set shellslash
 

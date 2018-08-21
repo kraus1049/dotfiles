@@ -191,11 +191,6 @@ function! LightlineLinterOK() abort
 	return l:counts.total == 0 ? '✓' : ''
 endfunction
 
-augroup LightLineWithAle
-	autocmd!
-	autocmd User ALELint call lightline#update()
-augroup END
-
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0

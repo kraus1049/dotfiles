@@ -1,3 +1,5 @@
+let g:load_unuse_toml = 0
+
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 let s:path = expand('~/.vim/dein')
 let s:toml_path = '~/.vim/rc/dein.toml'
@@ -6,6 +8,7 @@ let s:toml_neo_path = '~/.vim/rc/deineo.toml'
 let s:toml_filetype_path = '~/.vim/rc/deinft.toml'
 
 let s:toml_testpath = '~/.vim/rc/deintest.toml'
+let s:toml_unuse = '~/.vim/rc/deinunuse.toml'
 
 if !dein#load_state(s:path)
   finish
@@ -17,6 +20,10 @@ call dein#begin(s:path, expand('<sfile>'))
 		call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
 	else
 		call dein#add('lervag/vimtex')
+	endif
+
+	if g:load_unuse_toml
+		call dein#load_toml(s:toml_unuse, {'lazy': 1})
 	endif
 
   if has('nvim')

@@ -39,10 +39,6 @@ endif
 source ~/.vim/cmdex.vim
 "}}}
 
-"molokai{{{
-let g:rehash256 = 1
-"}}}
-
 "codex{{{
 set tags=tags;/,codex.tags;/
 "}}}

@@ -39,92 +39,92 @@ endfunction
 
 "}}}
 
-function! vimrc#changeModeParenthesis() abort "{{{
-  if !exists('s:parenthesis')
-    let s:parenthesis = 1
-  endif
-  if s:parenthesis == 0
-		iunmap {
-		iunmap {<ESC>
-		iunmap {<Enter>
-    iunmap {}
+" function! vimrc#changeModeParenthesis() abort "{{{
+"   if !exists('s:parenthesis')
+"     let s:parenthesis = 1
+"   endif
+"   if s:parenthesis == 0
+" 		iunmap {
+" 		iunmap {<ESC>
+" 		iunmap {<Enter>
+"     iunmap {}
 
-    iunmap [
-    iunmap [<ESC>
-    iunmap [<Enter>
-    iunmap []
+"     iunmap [
+"     iunmap [<ESC>
+"     iunmap [<Enter>
+"     iunmap []
 
-    iunmap (
-    iunmap (<ESC>
-    iunmap (<Enter>
-    iunmap ()
+"     iunmap (
+"     iunmap (<ESC>
+"     iunmap (<Enter>
+"     iunmap ()
 
-    iunmap "
-    iunmap "<ESC>
-    iunmap ""
+"     iunmap "
+"     iunmap "<ESC>
+"     iunmap ""
 
-    iunmap '
-    iunmap '<ESC>
-    iunmap ''
+"     iunmap '
+"     iunmap '<ESC>
+"     iunmap ''
 
-    iunmap <
-    iunmap <<ESC>
-    iunmap <>
+"     iunmap <
+"     iunmap <<ESC>
+"     iunmap <>
 
-    " iunmap <Bar><Bar>
-    " iunmap <Bar><Bar><ESC>
-    " iunmap <Bar><Bar>
+"     " iunmap <Bar><Bar>
+"     " iunmap <Bar><Bar><ESC>
+"     " iunmap <Bar><Bar>
 
-    iunmap `
-    iunmap `<ESC>
-    iunmap ``
+"     iunmap `
+"     iunmap `<ESC>
+"     iunmap ``
 
-		" iunmap $
-		" iunmap $<ESC>
-		" iunmap $$
-    echo('parenthesis Off')
-    let s:parenthesis = 1
-  else
-    inoremap { {}<LEFT>
-    inoremap {<ESC> {<ESC>
-    inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
-		inoremap {} {}
+" 		" iunmap $
+" 		" iunmap $<ESC>
+" 		" iunmap $$
+"     echo('parenthesis Off')
+"     let s:parenthesis = 1
+"   else
+"     inoremap { {}<LEFT>
+"     inoremap {<ESC> {<ESC>
+"     inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
+" 		inoremap {} {}
 
-		inoremap [ []<LEFT>
-		inoremap [<ESC> [<ESC>
-		inoremap [<Enter> []<LEFT><CR><ESC><S-o>
-    inoremap [] []
+" 		inoremap [ []<LEFT>
+" 		inoremap [<ESC> [<ESC>
+" 		inoremap [<Enter> []<LEFT><CR><ESC><S-o>
+"     inoremap [] []
 
-    inoremap ( ()<LEFT>
-    inoremap (<ESC> (<ESC>
-    inoremap (<Enter> ()<LEFT><CR><ESC><S-o>
-    inoremap () ()
+"     inoremap ( ()<LEFT>
+"     inoremap (<ESC> (<ESC>
+"     inoremap (<Enter> ()<LEFT><CR><ESC><S-o>
+"     inoremap () ()
 
-    inoremap " ""<LEFT>
-    inoremap "<ESC> "<ESC>
-    inoremap "" ""
+"     inoremap " ""<LEFT>
+"     inoremap "<ESC> "<ESC>
+"     inoremap "" ""
 
-    inoremap ' ''<LEFT>
-    inoremap '<ESC> '<ESC>
-    inoremap '' ''
+"     inoremap ' ''<LEFT>
+"     inoremap '<ESC> '<ESC>
+"     inoremap '' ''
 
-    inoremap < <><LEFT>
-    inoremap <<ESC> <<ESC>
-    inoremap <> <>
+"     inoremap < <><LEFT>
+"     inoremap <<ESC> <<ESC>
+"     inoremap <> <>
 
-    " inoremap <Bar> <Bar><Bar><LEFT>
-    " inoremap <Bar><ESC> <Bar><ESC>
-    " inoremap <Bar><Bar> <Bar><Bar>
+"     " inoremap <Bar> <Bar><Bar><LEFT>
+"     " inoremap <Bar><ESC> <Bar><ESC>
+"     " inoremap <Bar><Bar> <Bar><Bar>
 
-    inoremap ` ``<LEFT>
-    inoremap `<ESC> `<ESC>
-    inoremap `` ``
+"     inoremap ` ``<LEFT>
+"     inoremap `<ESC> `<ESC>
+"     inoremap `` ``
 
-		" inoremap $ $$<LEFT>
-		" inoremap $<ESC> $<ESC>
-		" inoremap $$ $$
-    echo('parenthesis On')
-    let s:parenthesis = 0
-  endif
-endfunction
+" 		" inoremap $ $$<LEFT>
+" 		" inoremap $<ESC> $<ESC>
+" 		" inoremap $$ $$
+"     echo('parenthesis On')
+"     let s:parenthesis = 0
+"   endif
+" endfunction
 "}}}

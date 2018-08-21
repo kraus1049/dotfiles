@@ -47,13 +47,13 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap [changeMode] <Nop>
 nmap <Space>m [changeMode]
 nnoremap [changeMode]h :<C-u>call vimrc#changeModeHighLight()<CR>
-nnoremap [changeMode]p :<C-u>call vimrc#changeModeParenthesis()<CR>
+" nnoremap [changeMode]p :<C-u>call vimrc#changeModeParenthesis()<CR>
 nnoremap [changeMode]; :<C-u>call vimrc#changeModeSemicolon()<CR>
 
 augroup MyAutoCmd
 	autocmd VimEnter * silent! call vimrc#changeModeSemicolon()
 	autocmd VimEnter * silent! call vimrc#changeModeHighLight()
-	autocmd VimEnter * silent! call vimrc#changeModeParenthesis()
+	" autocmd VimEnter * silent! call vimrc#changeModeParenthesis()
 augroup END
 
 " vim: foldmethod=marker
