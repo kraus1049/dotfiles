@@ -6,5 +6,4 @@
 [core]
 	whitespace = cr-at-eol
 [merge]
-	ff = false
 	ff = true
