@@ -282,6 +282,7 @@ unsetopt BG_NICE
     # alias -g D='$(peco-directory)'
     alias -g Djupyterlab='docker-compose -f $HOME/src/containers/jupyterlab/docker-compose.yml up --build'
     alias docker-gc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc spotify/docker-gc'
+    alias -g Dmeep='docker-compose -f $HOME/src/containers/meep/docker-compose.yml build && docker-compose -f $HOME/src/containers/meep/docker-compose.yml run meep bash'
 }
 
 : "略語展開(iab)" && {
