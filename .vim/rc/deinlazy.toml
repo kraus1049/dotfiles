@@ -140,7 +140,7 @@ hook_add = '''
 	set hidden
 	let g:LanguageClient_serverCommands = {
 		\ 'rust' : ['rustup', 'run', 'nightly', 'rls'],
-		\ 'python' : ['~/.local/bin/pyls'],
+		\ 'python' : ['~/.pyenv/shims/pyls'],
 		\ 'ruby' : ['solargraph', 'stdio'],
 		\ 'c': ['clangd-6.0', '-compile-commands-dir=' . getcwd() . '/build'],
 		\ 'cpp': ['clangd-6.0', '-compile-commands-dir=' . getcwd() . '/build'],
@@ -162,7 +162,6 @@ on_ft = ['python','rust','ruby','c','cpp','haskell']
 [[plugins]]
 repo = 'junegunn/fzf'
 
-
 # }}}
 
 # python tools {{{
@@ -175,6 +174,17 @@ on_ft = ['python']
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'
 on_ft = ['python']
+
+[[plugins]]
+repo = 'hdima/python-syntax'
+on_ft = ['python']
+hook_add = '''
+	let g:python_highlight_all = 1
+'''
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = 'python'
 
 # }}}
 
