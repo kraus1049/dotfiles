@@ -99,13 +99,6 @@ if has('syntax')
 endif
 "---------------------------------------------------------------------------------------------------------------------------}}}
 
-augroup MyAutoCmd
-  autocmd ColorScheme * highlight MatchParen ctermfg=208 ctermbg=233
-augroup END
-
-" set termguicolors
-" 256色
-
 if has('vim_starting')
   " 利用可能な場合は true color を有効化する
   if !has('gui_running')
@@ -121,9 +114,14 @@ if has('vim_starting')
   endif
 
 set t_Co=256
+" colorscheme sublimemonokai
 colorscheme molokai
 
 endif
+
+augroup MyAutoCmd
+  autocmd ColorScheme * highlight MatchParen ctermfg=208 ctermbg=233
+augroup END
 
 set guiheadroom=0
 

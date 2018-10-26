@@ -283,6 +283,7 @@ unsetopt BG_NICE
     alias -g Djupyterlab='docker-compose -f $HOME/src/containers/jupyterlab/docker-compose.yml up --build'
     alias docker-gc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc spotify/docker-gc'
     alias -g Dmeep='docker-compose -f $HOME/src/containers/meep/docker-compose.yml build && docker-compose -f $HOME/src/containers/meep/docker-compose.yml run meep bash'
+    alias -g Dgdspy='docker-compose -f $HOME/src/containers/gdspy/docker-compose.yml build && docker-compose -f $HOME/src/containers/gdspy/docker-compose.yml run gdspy bash'
 }
 
 : "略語展開(iab)" && {
