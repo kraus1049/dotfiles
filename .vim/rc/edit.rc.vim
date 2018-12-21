@@ -160,5 +160,7 @@ endif
 let g:tex_flavor = "latex"
 
 set spelllang=en,cjk
+
+cnoreabbrev w] w
 " vim: foldmethod=marker
 "vim: foldlevel=0

@@ -83,6 +83,13 @@ on_source = ['denite.nvim']
 repo = 'chemzqm/unite-location'
 on_source = ['denite.nvim']
 
+[[plugins]]
+repo = 'junegunn/vim-emoji'
+on_source = ['vim-denite-emoji.nvim']
+
+[[plugins]]
+repo = 'pocari/vim-denite-emoji'
+on_source = ['denite.nvim']
 #}}}
 
 #VimFiler {{{
@@ -194,14 +201,7 @@ repo = 'Shougo/deoplete.nvim'
 depends = ['nvim-yarp','vim-hug-neovim-rpc','context_filetype.vim']
 hook_add = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
 hook_source = '''
-	call deoplete#custom#var('omni', 'input_patterns', {
-	\ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
-	\ 'c'          : ['[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'],
-	\ 'cpp'        : ['[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'],
-	\ 'go'         : ['[^. \t]\.\%(\h\w*\)\?'],
-	\ 'typescript' : ['[^. \t]\.\%(\h\w*\)\?'],
-	\ 'python'     : ['\h\w*\|[^. \t]\.\w*'],
-	\})
+	source ~/.vim/rc/plugins/deoplete-source.rc.vim
 '''
 if = "has('python3') && v:version >= 800"
 on_i = 1
@@ -289,6 +289,13 @@ on_ft = 'rust'
 repo = 'itchyny/vim-haskell-indent'
 on_ft = ['haskell']
 
+#}}}
+
+
+# elixir {{{
+[[plugins]]
+repo = 'elixir-lang/vim-elixir'
+on_ft = ['elixir']
 #}}}
 
 # lightline {{{

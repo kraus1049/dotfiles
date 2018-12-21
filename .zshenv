@@ -61,12 +61,14 @@
     export SCALA_HOME=$HOME/.local/share/umake/scala/scala-lang
     export PYENV_ROOT=$HOME/.pyenv
     export XDG_CONFIG_HOME=$HOME/.config
+    export MIX_HOME=$HOME/.mix
 }
 
 : "pathを設定" && {
     # safe_path
     #優先度高いものほど↑へ
     path=(
+        $MIX_HOME(N-/)
         $HOME/.local/bin(N-/)
         /usr/local/heroku/bin(N-/)
         $HOME/.rbenv/versions/2.3.0-dev/bin(N-/)
