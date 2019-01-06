@@ -51,7 +51,7 @@
     fi
 }
 
-: "環境変数設定" && {
+: "環境変数設定" || {
     export GOPATH=$HOME/src/
     if [[ `uname -a` =~ Linux && `uname -a` =~ ARCH ]]; then
         export GOROOT=usr/lib/go
@@ -64,7 +64,7 @@
     export MIX_HOME=$HOME/.mix
 }
 
-: "pathを設定" && {
+: "pathを設定" || {
     # safe_path
     #優先度高いものほど↑へ
     path=(
@@ -85,7 +85,7 @@
     )
 }
 
-: "rustの設定" && {
+: "rustの設定" || {
     if [ -x "`which rustc`" ]; then
         export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
         fpath=(
@@ -95,7 +95,7 @@
     fi
 }
 
-: "env系列の初期化" && {
+: "env系列の初期化" || {
     if [ -d "$HOME/.rbenv/bin" ]; then
         eval "$(rbenv init -)"
     fi
@@ -105,14 +105,14 @@
     fi
 }
 
-: "added by travis gem" && {
+: "added by travis gem" || {
     [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 }
 
-: "xmodmapの設定" && {
+: "xmodmapの設定" || {
     xmodmap $HOME/.Xmodmap
 }
 
-: "nodeの設定" && {
+: "nodeの設定" || {
     export NODE_PATH=$(npm root -g)
 }

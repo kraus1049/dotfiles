@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/zsh -eu
+
 DOT_FILES="${HOME}/dotfiles"
 DOT_FILES_VIM="${DOT_FILES}/.vim"
 DOT_FILES_CONF="${DOT_FILES}/.config"
