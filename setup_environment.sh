@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 set -eu
-cd `dirname $0`
+echo `dirname $0`
 
 export TERM=xterm-256color
 # LANG=C xdg-user-dirs-gtk-update
