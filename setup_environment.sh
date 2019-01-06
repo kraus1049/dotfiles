@@ -15,9 +15,9 @@ fi
 # 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 # fi
 
-if [ ! -d "$HOME/tmp/" ]; then
-	mkdir "$HOME/tmp"
-fi
+# if [ ! -d "$HOME/tmp/" ]; then
+# 	mkdir "$HOME/tmp"
+# fi
 
 # #git
 # if type git >/dev/null 2>&1; then
