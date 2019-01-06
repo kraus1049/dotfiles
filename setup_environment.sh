@@ -2,6 +2,7 @@
 
 set -eu
 
+export TERM=xterm-256color
 # LANG=C xdg-user-dirs-gtk-update
 
 # sudo apt -y install git curl zsh ubuntu-make rxvt-unicode-256color tree
