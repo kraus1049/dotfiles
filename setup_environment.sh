@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 set -eu
-echo `dirname $0`
+cd `dirname $0`
 
 export TERM=xterm-256color
 # LANG=C xdg-user-dirs-gtk-update
@@ -11,7 +11,6 @@ export TERM=xterm-256color
 
 if [ ! -d "$HOME/.zplug/" ]; then
     export ZPLUG_HOME="$HOME/.plug"
-    echo "aaa"
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
     # curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
