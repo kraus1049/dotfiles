@@ -9,7 +9,9 @@ export TERM=xterm-256color
 # sudo apt -y install xmonad dmenu libghc-xmonad-dev libghc-xmonad-contrib-dev xmobar xcompmgr nitrogen stalonetray moreutils synapse ssh-askpass-gnome
 
 if [ ! -d "$HOME/.zplug/" ]; then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+    export ZPLUG_HOME="$HOME/.plug"
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
+    # curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
 # if [ ! -d "$HOME/.pyenv/" ]; then
