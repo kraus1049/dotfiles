@@ -24,3 +24,6 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 hook_source = 'set helplang=ja,en'
+
+[[plugins]]
+repo = 'thinca/vim-fontzoom'

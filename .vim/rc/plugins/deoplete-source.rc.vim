@@ -7,19 +7,19 @@
 " let g:deoplete#enable_refresh_always        = 0
 " let g:deoplete#max_list                     = 10000
 
+			"\'complete_method': 'omnifunc',
 call deoplete#custom#option({
-			\'auto_complete_delay': 100,
+			\'auto_complete_delay': 0,
 			\'camel_case': v:true,
-			\'complete_method': 'omnifunc',
 			\'max_list': 500,
-			\'num_processes': 2,
+			\'num_processes': 1,
 			\'refresh_always': v:false,
 			\'yarp': v:true
 			\})
 
-if !exists('g:deoplete#omni#input_patterns')
-	let g:deoplete#omni#input_patterns = {}
-endif
+" if !exists('g:deoplete#omni#input_patterns')
+" 	let g:deoplete#omni#input_patterns = {}
+" endif
 
 "texの設定はvimtexで行う
 
@@ -29,11 +29,11 @@ endif
 "tabで補完
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
-call deoplete#custom#var('omni', 'input_patterns', {
-\ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
-\ 'c'          : ['[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'],
-\ 'cpp'        : ['[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'],
-\ 'go'         : ['[^. \t]\.\%(\h\w*\)\?'],
-\ 'typescript' : ['[^. \t]\.\%(\h\w*\)\?'],
-\ 'python'     : ['\h\w*\|[^. \t]\.\w*'],
-\})
+" call deoplete#custom#var('omni', 'input_patterns', {
+"\ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
+"\ 'c'          : ['[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'],
+"\ 'cpp'        : ['[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'],
+"\ 'go'         : ['[^. \t]\.\%(\h\w*\)\?'],
+"\ 'typescript' : ['[^. \t]\.\%(\h\w*\)\?'],
+"\ 'python'     : ['\h\w*\|[^. \t]\.\w*'],
+"\})
